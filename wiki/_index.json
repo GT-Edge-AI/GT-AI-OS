@@ -1,0 +1,78 @@
+{
+  "navigation": [
+    {
+      "slug": "getting-started",
+      "title": "Getting Started",
+      "role": "all",
+      "icon": "rocket"
+    },
+    {
+      "slug": "getting-support",
+      "title": "Support",
+      "role": "all",
+      "icon": "headphones"
+    },
+    {
+      "slug": "chat-interface",
+      "title": "Chat Interface",
+      "role": "all",
+      "icon": "message-square",
+      "children": [
+        { "slug": "chat-interface/managing-conversations", "title": "Managing Conversations", "role": "all" },
+        { "slug": "chat-interface/using-datasets", "title": "Using Datasets in Chat", "role": "all" }
+      ]
+    },
+    {
+      "slug": "agents",
+      "title": "Agents",
+      "role": "all",
+      "icon": "bot",
+      "children": [
+        { "slug": "agents/finding", "title": "Finding Agents", "role": "all" },
+        { "slug": "agents/creating", "title": "Creating Agents", "role": "all" },
+        { "slug": "agents/configuring", "title": "Configuring Agents", "role": "all" },
+        { "slug": "agents/sharing", "title": "Sharing Agents", "role": "all" },
+        { "slug": "agents/templates", "title": "Agent Templates", "role": "all" }
+      ]
+    },
+    {
+      "slug": "datasets",
+      "title": "Datasets",
+      "role": "all",
+      "icon": "database",
+      "children": [
+        { "slug": "datasets/creating", "title": "Creating Datasets", "role": "all" },
+        { "slug": "datasets/managing-documents", "title": "Managing Documents", "role": "all" },
+        { "slug": "datasets/sharing", "title": "Sharing Datasets", "role": "all" },
+        { "slug": "datasets/vision-models", "title": "Vision Models", "role": "all" }
+      ]
+    },
+    {
+      "slug": "teams",
+      "title": "Teams",
+      "role": "all",
+      "icon": "users",
+      "children": [
+        { "slug": "teams/joining", "title": "Joining Teams", "role": "all" },
+        { "slug": "teams/shared-resources", "title": "Shared Resources", "role": "all" },
+        { "slug": "teams/managing", "title": "Managing Teams", "role": "all" }
+      ]
+    },
+    {
+      "slug": "observability",
+      "title": "Observability",
+      "role": "all",
+      "icon": "bar-chart"
+    },
+    {
+      "slug": "tenant-admin",
+      "title": "Tenant Admin",
+      "role": "admin",
+      "icon": "shield",
+      "children": [
+        { "slug": "tenant-admin/users", "title": "Managing Users", "role": "admin" },
+        { "slug": "tenant-admin/observability", "title": "Tenant Admin Observability", "role": "admin" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+# Sync wiki/ on main to the GT-AI-OS GitHub Wiki (.wiki.git).
+# GitHub only provisions .wiki.git after the first wiki page exists; strategy init force-pushes the corpus.
+name: Sync instructions wiki
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'wiki/**'
+      - '.github/workflows/sync-instructions-wiki.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Push wiki directory to GitHub Wiki
+        uses: Andrew-Chen-Wang/github-wiki-action@v4
+        with:
+          path: wiki
+          strategy: init
+          token: ${{ secrets.GITHUB_TOKEN }}

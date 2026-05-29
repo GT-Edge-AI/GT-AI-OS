@@ -1,0 +1,319 @@
+{
+  "navigation": [
+    {
+      "slug": "gen3/getting-started",
+      "title": "Getting Started",
+      "role": "all",
+      "icon": "rocket"
+    },
+    {
+      "slug": "gen3/getting-support",
+      "title": "Support",
+      "role": "all",
+      "icon": "headphones"
+    },
+    {
+      "slug": "gen3/chat",
+      "title": "GT Chat",
+      "role": "all",
+      "icon": "message-square",
+      "children": [
+        {
+          "slug": "gen3/chat/starting-conversations",
+          "title": "Starting Conversations",
+          "role": "all"
+        },
+        {
+          "slug": "gen3/chat/using-datasets",
+          "title": "Using Datasets in Chat",
+          "role": "all"
+        },
+        {
+          "slug": "gen3/chat/reviewing-conversations",
+          "title": "Reviewing and Exporting Conversations",
+          "role": "all"
+        }
+      ]
+    },
+    {
+      "slug": "gen3/agents",
+      "title": "Agents",
+      "role": "all",
+      "icon": "bot",
+      "children": [
+        {
+          "slug": "gen3/agents/building",
+          "title": "Building Agents",
+          "role": "all"
+        },
+        {
+          "slug": "gen3/agents/sharing",
+          "title": "Sharing Agents",
+          "role": "all"
+        },
+        {
+          "slug": "gen3/agents/helper-agent",
+          "title": "GT Helper",
+          "role": "all"
+        }
+      ]
+    },
+    {
+      "slug": "gen3/datasets",
+      "title": "Datasets",
+      "role": "all",
+      "icon": "database",
+      "children": [
+        {
+          "slug": "gen3/datasets/uploading",
+          "title": "Uploading and Importing Documents",
+          "role": "all"
+        },
+        {
+          "slug": "gen3/datasets/managing",
+          "title": "Managing Dataset Content",
+          "role": "all"
+        }
+      ]
+    },
+    {
+      "slug": "gen3/groups",
+      "title": "Groups",
+      "role": "all",
+      "icon": "users",
+      "children": [
+        {
+          "slug": "gen3/groups/managing-membership",
+          "title": "Managing Membership and Sharing",
+          "role": "all"
+        }
+      ]
+    },
+    {
+      "slug": "gen3/model-catalog",
+      "title": "Model Catalog",
+      "role": "all",
+      "icon": "cpu"
+    },
+    {
+      "slug": "gen3/conversations",
+      "title": "Conversations",
+      "role": "all",
+      "icon": "history"
+    },
+    {
+      "slug": "gen3/observability",
+      "title": "Observability",
+      "role": "all",
+      "icon": "bar-chart"
+    },
+    {
+      "slug": "gen3/users",
+      "title": "Users",
+      "role": "tenant_manager",
+      "icon": "users"
+    },
+    {
+      "slug": "gen3/tenant-admin",
+      "title": "Tenant Administration",
+      "role": "tenant_manager",
+      "icon": "shield",
+      "children": [
+        {
+          "slug": "gen3/tenant-admin/tenant-managers",
+          "title": "Tenant Manager Guide",
+          "role": "tenant_manager"
+        },
+        {
+          "slug": "gen3/tenant-admin/tenant-owners",
+          "title": "Tenant Owner Guide",
+          "role": "tenant_owner"
+        }
+      ]
+    },
+    {
+      "slug": "gen3/gt-api",
+      "title": "GT API",
+      "icon": "plug",
+      "role": "all",
+      "children": [
+        {
+          "slug": "gen3/gt-api/overview",
+          "title": "Overview",
+          "role": "all"
+        },
+        {
+          "slug": "gen3/gt-api/keys-and-access",
+          "title": "API Keys and Access",
+          "role": "all"
+        },
+        {
+          "slug": "gen3/gt-api/published-endpoints",
+          "title": "Published Endpoints",
+          "role": "all"
+        },
+        {
+          "slug": "gen3/gt-api/compatibility-matrix",
+          "title": "Compatibility Matrix",
+          "role": "all"
+        },
+        {
+          "slug": "gen3/gt-api/client-runbooks",
+          "title": "Integration runbooks",
+          "role": "all",
+          "children": [
+            {
+              "slug": "gen3/gt-api/runbooks/openai-sdk-curl",
+              "title": "OpenAI SDK / curl",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/langchain",
+              "title": "LangChain",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/llamaindex",
+              "title": "LlamaIndex",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/vercel-ai-sdk",
+              "title": "Vercel AI SDK",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/litellm",
+              "title": "LiteLLM",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/crewai",
+              "title": "CrewAI",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/langflow",
+              "title": "Langflow",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/flowise",
+              "title": "Flowise",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/dify",
+              "title": "Dify",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/anythingllm",
+              "title": "AnythingLLM",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/semantic-kernel",
+              "title": "Semantic Kernel",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/continue",
+              "title": "Continue",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/cursor",
+              "title": "Cursor",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/cline-roo",
+              "title": "Cline / Roo Code",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/aider",
+              "title": "Aider",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/manus",
+              "title": "Manus",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/openclaw",
+              "title": "OpenClaw",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/hermes",
+              "title": "Hermes Agent",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/n8n",
+              "title": "n8n",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/lovable",
+              "title": "Lovable",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/open-webui",
+              "title": "Open WebUI",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/librechat",
+              "title": "LibreChat",
+              "role": "all"
+            },
+            {
+              "slug": "gen3/gt-api/runbooks/generic-openai-http",
+              "title": "Generic OpenAI-compatible HTTP client",
+              "role": "all"
+            }
+          ]
+        },
+        {
+          "slug": "gen3/gt-api/api-reference",
+          "title": "API Reference",
+          "role": "all"
+        }
+      ]
+    },
+    {
+      "slug": "gen3/workflows",
+      "title": "How to Build Your AI Workflow",
+      "role": "all",
+      "icon": "workflow",
+      "children": [
+        {
+          "slug": "gen3/workflows/document-review",
+          "title": "Document Review",
+          "role": "all"
+        },
+        {
+          "slug": "gen3/workflows/diagram-review",
+          "title": "Diagram Review",
+          "role": "all"
+        },
+        {
+          "slug": "gen3/workflows/mock-assessments",
+          "title": "Mock Assessments",
+          "role": "all"
+        }
+      ]
+    },
+    {
+      "slug": "gen3/settings",
+      "title": "Account Settings",
+      "role": "all",
+      "icon": "settings"
+    }
+  ]
+}
