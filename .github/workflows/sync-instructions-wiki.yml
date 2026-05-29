@@ -22,5 +22,5 @@ jobs:
         uses: Andrew-Chen-Wang/github-wiki-action@v4
         with:
           path: wiki
-          strategy: init
+          strategy: clone
           token: ${{ secrets.GITHUB_TOKEN }}
