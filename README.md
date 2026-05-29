@@ -6,6 +6,8 @@ GT AI OS is a **self-hosted enterprise AI platform** for **RKE2** (Kubernetes). 
 
 This repository has releases and install documentation for **v3.0.2** and later. Install from [GitHub Releases](https://github.com/GT-Edge-AI/GT-AI-OS/releases); images are on **`ghcr.io/gt-edge-ai`**.
 
+Some capabilities require an **Enterprise license** from [GT Edge AI](https://gtedge.ai/contact-us). See [Enterprise license](#enterprise-license) below.
+
 ---
 
 ## Installation
@@ -106,7 +108,27 @@ Clusters must reach **`ghcr.io/gt-edge-ai`** (or your approved mirror). Database
 - **GT API** — OpenAI-compatible API for integrated applications (see wiki)
 - **Teams and sharing** — Workgroup access to agents and datasets
 - **Observability** — Usage dashboards, conversation review, and operational metrics
-- **Enterprise controls** — Licensing, SSO, compliance mode, backup/restore (Control Panel)
+- **Enterprise controls** — SSO, compliance mode, billing, and GT API (license required; see below)
+
+---
+
+## Enterprise license
+
+You can install and use GT AI OS **without a license** for evaluation, with **low user limits**. An **Enterprise license** raises seat limits and unlocks the integrations below. Licenses are **not** included in this repository—you request one from GT Edge AI and activate it on the Control Panel **License** page.
+
+**Contact GT Edge AI** to request a license for your deployment: [gtedge.ai/contact-us](https://gtedge.ai/contact-us).
+
+| Area | Requires Enterprise license |
+|------|----------------------------|
+| **Control Panel — SSO** | Identity providers and SCIM provisioning |
+| **Control Panel — Compliance mode** | Compliance configuration |
+| **Control Panel — Financial controls** | Billing policy, allocations, and related broadcasts |
+| **Tenant app — GT API** | API keys and external application integrations (also enable GT API for the tenant) |
+| **Tenant app — Billing** | Usage billing views and allocations (tenant owner) |
+
+**Included without a license** (subject to seat caps): install and updates, agents, chat, RAG, datasets, models, teams, backup/restore, and most observability (billing tabs stay hidden until licensed).
+
+After you receive a license file, open **Control Panel → License**, upload it, and confirm the status shows active before using the features above.
 
 ---
 
@@ -172,7 +194,7 @@ v3.0.2 does not dual-publish to the Internal release repository. Use the support
 - **Runbook issues:** [GitHub Issues](https://github.com/GT-Edge-AI/GT-AI-OS/issues)
 - **In-app:** Tenant **Instructions** and **Contact support** (when configured by your operator)
 - **Security:** [SECURITY.md](SECURITY.md) and [contact GT Edge AI](https://gtedge.ai/contact-us)
-- **Licensing:** Deployment licenses are issued separately; contact your GT Edge AI operator
+- **Licensing:** [Request an Enterprise license](https://gtedge.ai/contact-us) from GT Edge AI; activate on Control Panel → **License**
 
 ---
 
