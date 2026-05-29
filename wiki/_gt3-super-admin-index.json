@@ -1,0 +1,106 @@
+{
+  "navigation": [
+    {
+      "slug": "gen3-admin/getting-started",
+      "title": "Getting Started",
+      "role": "all",
+      "icon": "rocket"
+    },
+    {
+      "slug": "gen3-admin/dashboard",
+      "title": "Dashboard",
+      "role": "all",
+      "icon": "layout-dashboard"
+    },
+    {
+      "slug": "gen3-admin/users",
+      "title": "Users",
+      "role": "all",
+      "icon": "users"
+    },
+    {
+      "slug": "gen3-admin/sso",
+      "title": "SSO Providers",
+      "role": "all",
+      "icon": "key-round"
+    },
+    {
+      "slug": "gen3-admin/models",
+      "title": "Models",
+      "role": "all",
+      "icon": "cpu"
+    },
+    {
+      "slug": "gen3-admin/updates",
+      "title": "Updates",
+      "role": "all",
+      "icon": "refresh-cw"
+    },
+    {
+      "slug": "gen3-admin/backup-restore",
+      "title": "Backup & Restore",
+      "role": "all",
+      "icon": "database"
+    },
+    {
+      "slug": "gen3-admin/financial-controls",
+      "title": "Financial Controls",
+      "role": "all",
+      "icon": "receipt"
+    },
+    {
+      "slug": "gen3-admin/email-settings",
+      "title": "Email Settings",
+      "role": "all",
+      "icon": "mail"
+    },
+    {
+      "slug": "gen3-admin/email-templates",
+      "title": "Email Templates & Modules",
+      "role": "all",
+      "icon": "mail-stack"
+    },
+    {
+      "slug": "gen3-admin/licenses",
+      "title": "License",
+      "role": "all",
+      "icon": "badge-check"
+    },
+    {
+      "slug": "gen3-admin/access-logs",
+      "title": "Access Logs",
+      "role": "all",
+      "icon": "clipboard-list"
+    },
+    {
+      "slug": "gen3-admin/helper-usage",
+      "title": "CTP Helper Usage",
+      "role": "all",
+      "icon": "eye"
+    },
+    {
+      "slug": "gen3-admin/compliance-mode",
+      "title": "Compliance Mode",
+      "role": "all",
+      "icon": "shield-check"
+    },
+    {
+      "slug": "gen3-admin/instructions-settings",
+      "title": "Instructions Settings",
+      "role": "all",
+      "icon": "book-open"
+    },
+    {
+      "slug": "gen3-admin/instructions-helper",
+      "title": "GT Helper",
+      "role": "all",
+      "icon": "help-circle"
+    },
+    {
+      "slug": "gen3-admin/settings",
+      "title": "Settings",
+      "role": "all",
+      "icon": "settings"
+    }
+  ]
+}

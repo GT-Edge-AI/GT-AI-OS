@@ -1,0 +1,44 @@
+{
+  "navigation": [
+    {
+      "slug": "getting-started",
+      "title": "Getting Started",
+      "icon": "rocket"
+    },
+    {
+      "slug": "deployment-checklist",
+      "title": "Deployment Checklist",
+      "icon": "clipboard-check"
+    },
+    {
+      "slug": "tenant-management",
+      "title": "Tenant Management",
+      "icon": "building"
+    },
+    {
+      "slug": "user-management",
+      "title": "User Management",
+      "icon": "users"
+    },
+    {
+      "slug": "financial-controls",
+      "title": "Financial Controls",
+      "icon": "receipt"
+    },
+    {
+      "slug": "email-settings",
+      "title": "Email Settings",
+      "icon": "mail"
+    },
+    {
+      "slug": "license-management",
+      "title": "License Management",
+      "icon": "shield"
+    },
+    {
+      "slug": "troubleshooting",
+      "title": "Troubleshooting",
+      "icon": "help-circle"
+    }
+  ]
+}
