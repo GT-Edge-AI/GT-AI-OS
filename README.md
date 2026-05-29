@@ -32,19 +32,30 @@ v3.0.2+ uses **registry-backed** images only (no per-platform image bundle tarba
 **Operator (public repo — when available):**
 
 ```bash
-curl -fsSL https://github.com/GT-Edge-AI/GT-AI-OS/releases/latest/download/gt-ai-os-operator.sh | sudo bash
+# One-liner (pipe supported on v3.0.2+ operator assets; use -E so sudo keeps gh/token env)
+curl -fsSL https://github.com/GT-Edge-AI/GT-AI-OS/releases/latest/download/gt-ai-os-operator.sh | sudo -E bash
 ```
 
-**Operator / admin (private or internal repo — example v3.0.2):**
+Or download first (recommended for air-gapped re-runs):
+
+```bash
+curl -fsSL -o /tmp/gt-ai-os-operator.sh \
+  https://github.com/GT-Edge-AI/GT-AI-OS/releases/latest/download/gt-ai-os-operator.sh
+chmod +x /tmp/gt-ai-os-operator.sh
+sudo -E /tmp/gt-ai-os-operator.sh
+```
+
+**Operator (private repo until public — example v3.0.2):**
 
 ```bash
 gh auth login -h github.com -p https -s repo,read:packages -w
 export GITHUB_TOKEN="$(gh auth token)"
 gh release download v3.0.2 -R GT-Edge-AI/GT-AI-OS --pattern 'gt-ai-os-operator.sh' -D /tmp --clobber
 chmod +x /tmp/gt-ai-os-operator.sh
-sudo install -m 0755 /tmp/gt-ai-os-operator.sh /usr/local/bin/gt-ai-os-operator
-sudo -E gt-ai-os-operator
+sudo -E /tmp/gt-ai-os-operator.sh
 ```
+
+The operator installs itself to `/usr/local/bin/gt-ai-os-operator` when run with sufficient privileges.
 
 ---
 
