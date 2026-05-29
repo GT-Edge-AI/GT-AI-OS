@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
-GT AI OS is the enterprise release for **RKE2** clusters.
+GT AI OS is a **self-hosted enterprise AI platform** for **RKE2** (Kubernetes). A **Control Panel** handles administration; a **tenant app** gives users agents, chat, and document/RAG workflows. Data and inference stay in your environment.
 
 This repository has releases and install documentation for **v3.0.2** and later. Install from [GitHub Releases](https://github.com/GT-Edge-AI/GT-AI-OS/releases); images are on **`ghcr.io/gt-edge-ai`**.
 
