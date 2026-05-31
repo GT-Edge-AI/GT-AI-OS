@@ -29,31 +29,18 @@ Choose your platform for detailed runbooks in the wiki, then use one install ent
 
 v3.0.2+ uses **registry-backed** images only (no per-platform image bundle tarballs). While this repository is private, use `gh auth` or a release-read token; after the repository and GHCR are public, token-free install is supported.
 
-**Operator (public repo — when available):**
+**Operator (public repo):**
 
 ```bash
 curl -fsSL https://github.com/GT-Edge-AI/GT-AI-OS/releases/latest/download/gt-ai-os-operator.sh | sudo bash
 ```
-
-**Operator / admin (private or internal repo — example v3.0.2):**
-
-```bash
-gh auth login -h github.com -p https -s repo,read:packages -w
-export GITHUB_TOKEN="$(gh auth token)"
-gh release download v3.0.2 -R GT-Edge-AI/GT-AI-OS --pattern 'gt-ai-os-operator.sh' -D /tmp --clobber
-chmod +x /tmp/gt-ai-os-operator.sh
-sudo install -m 0755 /tmp/gt-ai-os-operator.sh /usr/local/bin/gt-ai-os-operator
-sudo -E gt-ai-os-operator
-```
-
----
 
 ## Update an existing installation
 
 **Ubuntu / DGX (operator menu):**
 
 ```bash
-sudo -E gt-ai-os-operator --update-interactive --version latest
+sudo gt-ai-os-admin update --yes --namespace <namespace-name> --to latest
 ```
 
 **Validate after upgrade:**
