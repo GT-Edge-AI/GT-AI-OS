@@ -4,7 +4,7 @@
 
 GT AI OS is a **self-hosted enterprise AI platform** for **RKE2** (Kubernetes). A **Control Panel** handles administration; a **tenant app** gives users agents, chat, and document/RAG workflows. Data and inference stay in your environment.
 
-This repository has releases and install documentation for **v3.0.2** and later. Install from [GitHub Releases](https://github.com/GT-Edge-AI/GT-AI-OS/releases); images are on **`ghcr.io/gt-edge-ai`**.
+This repository has releases and install documentation for **v3.0.2** and later (current stable: **v3.0.3**). Install from [GitHub Releases](https://github.com/GT-Edge-AI/GT-AI-OS/releases); images are on **`ghcr.io/gt-edge-ai`**.
 
 Some capabilities require an **Enterprise license** from [GT Edge AI](https://gtedge.ai/contact-us). See [Enterprise license](#enterprise-license) below.
 
@@ -21,26 +21,58 @@ Choose your platform for detailed runbooks in the wiki, then use one install ent
 
 | Method | Use when |
 |--------|----------|
-| **Operator script** | Interactive or scripted install on a fresh RKE2 host |
-| **Quick Installer `.deb`** | You want `gt-ai-os-operator` installed via apt |
-| **`gt-ai-os-admin` CLI** | Fully non-interactive install from release tarballs |
+| **Quick Installer `.deb`** (recommended) | Fresh install on **Ubuntu / Debian** — installs `gt-ai-os-operator` via apt, then run the operator menu |
+| **Operator script** | Same flow without apt (curl one-liner or saved script) |
+| **`gt-ai-os-admin` CLI** | Existing RKE2 cluster or fully non-interactive install from release tarballs |
 
 **Start here:** [Installation (wiki)](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Installation) · [Gen 3 Getting Started](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Getting-Started)
 
-v3.0.2+ uses **registry-backed** images only (no per-platform image bundle tarballs). While this repository is private, use `gh auth` or a release-read token; after the repository and GHCR are public, token-free install is supported.
+v3.0.2+ uses **registry-backed** images only (no per-platform image bundle tarballs). Public releases on this repository use **`ghcr.io/gt-edge-ai`** and do **not** require a GitHub PAT or packaged token for install when [release assets](https://github.com/GT-Edge-AI/GT-AI-OS/releases) and GHCR packages are reachable.
 
-**Operator (public repo):**
+A **fresh install** means: on a supported host, install the operator (`.deb` or script below), then run **`sudo -E gt-ai-os-operator`** and choose **Install** — the operator bootstraps RKE2 (when needed) and deploys your namespace. Neither step alone deploys GT AI OS without that interactive or non-interactive operator flow.
+
+### Recommended — Quick Installer (latest stable tag)
+
+Replace `v3.0.3` with another [release tag](https://github.com/GT-Edge-AI/GT-AI-OS/releases) if you are not installing the current stable version. The `.deb` version in the filename is the semver **without** the `v` prefix (for example `3.0.3` for tag `v3.0.3`).
 
 ```bash
-curl -fsSL https://github.com/GT-Edge-AI/GT-AI-OS/releases/latest/download/gt-ai-os-operator.sh | sudo bash
+curl -fsSL -o /tmp/gt-ai-os.deb \
+  https://github.com/GT-Edge-AI/GT-AI-OS/releases/download/v3.0.3/GT-AI-OS-Quick-Installer_3.0.3_all.deb
+sudo apt install -y /tmp/gt-ai-os.deb
+sudo -E gt-ai-os-operator
 ```
+
+### Alternative — operator script (no apt)
+
+**One-liner** (pipe supported on v3.0.2+ operator assets):
+
+```bash
+curl -fsSL https://github.com/GT-Edge-AI/GT-AI-OS/releases/latest/download/gt-ai-os-operator.sh | sudo -E bash
+```
+
+**Download first** (better for air-gapped re-runs or a fixed tag):
+
+```bash
+curl -fsSL -o /tmp/gt-ai-os-operator.sh \
+  https://github.com/GT-Edge-AI/GT-AI-OS/releases/download/v3.0.3/gt-ai-os-operator.sh
+chmod +x /tmp/gt-ai-os-operator.sh
+sudo -E /tmp/gt-ai-os-operator.sh
+```
+
+The operator installs itself to `/usr/local/bin/gt-ai-os-operator` when run with sufficient privileges.
+
+### Existing RKE2 cluster only
+
+If RKE2 is already installed and you only need to add a namespace (for example HA lab hosts), use **`gt-ai-os-admin`** from the release admin CLI tarballs — see [Gen 3 Getting Started](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Getting-Started) and `gt-ai-os-admin install --help`. That path is not a substitute for the operator on a **blank** host.
+
+---
 
 ## Update an existing installation
 
 **Ubuntu / DGX (operator menu):**
 
 ```bash
-sudo gt-ai-os-admin update --yes --namespace <namespace-name> --to latest
+sudo -E gt-ai-os-operator --update-interactive --version latest
 ```
 
 **Validate after upgrade:**
@@ -82,7 +114,7 @@ Clusters must reach **`ghcr.io/gt-edge-ai`** (or your approved mirror). Database
 
 | Topic | Detail |
 |-------|--------|
-| **Registry** | `ghcr.io/gt-edge-ai/gt-ai-os-*` tagged to match the release (for example `v3.0.2`) |
+| **Registry** | `ghcr.io/gt-edge-ai/gt-ai-os-*` tagged to match the release (for example `v3.0.3`) |
 | **Helm / manifest** | `gt-ai-os-v<version>.tgz` and `release-manifest.json` on each [Release](https://github.com/GT-Edge-AI/GT-AI-OS/releases) |
 | **Image bundles** | Not published for v3.0.2+ |
 
