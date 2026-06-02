@@ -157,17 +157,6 @@ sudo gt-ai-os-operator --nuke --yes    # Remove install (lab reset)
 
 ---
 
-## Migration from Internal releases (≤ v3.0.1)
-
-| Version | Release host | GHCR owner |
-|---------|--------------|------------|
-| ≤ v3.0.1 | `GT-Edge-AI-Internal/gt-ai-os-release` | `gt-edge-ai-internal` |
-| ≥ v3.0.2 | **This repository** | `gt-edge-ai` |
-
-v3.0.2 does not dual-publish to the Internal release repository. Upgrading to **v3.0.4+** via `gt-ai-os-operator --upgrade-non-interactive` or `gt-ai-os-admin update` automatically rewrites release repo, GHCR owner, and registry pulls (no manual env exports).
-
----
-
 ## Architecture
 
 ```
