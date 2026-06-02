@@ -19,11 +19,13 @@ v3.0.2+ uses **registry-backed** images only. Public releases on `GT-Edge-AI/GT-
 
 ## Quick Installer (.deb)
 
-Replace `v3.0.3` with your target [release tag](https://github.com/GT-Edge-AI/GT-AI-OS/releases). The `.deb` filename uses semver **without** the `v` prefix (for example `3.0.3` for tag `v3.0.3`).
+Uses the [latest published release](https://github.com/GT-Edge-AI/GT-AI-OS/releases/latest). To install a specific tag instead, set `TAG` before the download (for example `TAG=v3.0.3`). The `.deb` filename uses semver **without** the `v` prefix (`3.0.3` for tag `v3.0.3`).
 
 ```bash
+TAG="$(curl -fsSL https://api.github.com/repos/GT-Edge-AI/GT-AI-OS/releases/latest | grep '"tag_name"' | head -1 | cut -d'"' -f4)"
+VER="${TAG#v}"
 curl -fsSL -o /tmp/gt-ai-os.deb \
-  https://github.com/GT-Edge-AI/GT-AI-OS/releases/download/v3.0.3/GT-AI-OS-Quick-Installer_3.0.3_all.deb
+  "https://github.com/GT-Edge-AI/GT-AI-OS/releases/download/${TAG}/GT-AI-OS-Quick-Installer_${VER}_all.deb"
 sudo apt install -y /tmp/gt-ai-os.deb
 sudo -E gt-ai-os-operator
 ```

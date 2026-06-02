@@ -9,7 +9,7 @@ For installs from **v3.0.2+** public releases (`GT-Edge-AI/GT-AI-OS`, `ghcr.io/g
 ## Before you start
 
 - Run commands on the **same host** that installed the cluster (or any host with `/var/lib/gt-ai-os/admin` state and cluster `kubeconfig` access).
-- Know your namespace (default **`gt-ai-os-prod`**) and target release tag (for example **`v3.0.3`**).
+- Know your namespace (default **`gt-ai-os-prod`**). Target release defaults to **latest published**; pin with `TO_VERSION=v3.0.x` if needed.
 - List published tags if needed:
 
 ```bash
@@ -25,11 +25,11 @@ Shared operator state lives under **`/var/lib/gt-ai-os/admin`** (auth, `state.js
 
 ## Non-interactive upgrade (recommended for automation)
 
-Substitute your namespace and target tag:
+Substitute your namespace; `TO_VERSION` resolves to the latest published release unless you set it explicitly:
 
 ```bash
 export NAMESPACE="gt-ai-os-prod"
-export TO_VERSION="v3.0.3"
+export TO_VERSION="$(curl -fsSL https://api.github.com/repos/GT-Edge-AI/GT-AI-OS/releases/latest | grep '"tag_name"' | head -1 | cut -d'"' -f4)"
 
 sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
   KUBECONFIG=/etc/rancher/rke2/rke2.yaml \
@@ -61,7 +61,7 @@ sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
 Install the admin CLI for the target tag, then run `update` without `--yes` to confirm namespace and version at prompts:
 
 ```bash
-export TO_VERSION="v3.0.3"
+export TO_VERSION="$(curl -fsSL https://api.github.com/repos/GT-Edge-AI/GT-AI-OS/releases/latest | grep '"tag_name"' | head -1 | cut -d'"' -f4)"
 
 sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
   KUBECONFIG=/etc/rancher/rke2/rke2.yaml \
@@ -91,7 +91,7 @@ Hosted **Cloudflare** modes may prompt for or reuse stored Cloudflare profiles d
 When release notes say only the **admin CLI** changed:
 
 ```bash
-export TO_VERSION="v3.0.3"
+export TO_VERSION="$(curl -fsSL https://api.github.com/repos/GT-Edge-AI/GT-AI-OS/releases/latest | grep '"tag_name"' | head -1 | cut -d'"' -f4)"
 
 sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
   KUBECONFIG=/etc/rancher/rke2/rke2.yaml \

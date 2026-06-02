@@ -16,11 +16,13 @@ Install the **Quick Installer `.deb`**, then run the operator and choose **Insta
 
 v3.0.2+ uses **registry-backed** images only. Public releases use **`ghcr.io/gt-edge-ai`** and typically do **not** require a GitHub PAT when [release assets](https://github.com/GT-Edge-AI/GT-AI-OS/releases) and GHCR packages are reachable.
 
-Replace `v3.0.3` with another [release tag](https://github.com/GT-Edge-AI/GT-AI-OS/releases) if needed. The `.deb` version in the filename is semver **without** the `v` prefix (for example `3.0.3` for tag `v3.0.3`).
+Downloads the [latest published release](https://github.com/GT-Edge-AI/GT-AI-OS/releases/latest). To pin a specific tag, set `TAG` (for example `TAG=v3.0.3`) before running the commands. The `.deb` filename uses semver **without** the `v` prefix (`3.0.3` for tag `v3.0.3`).
 
 ```bash
+TAG="$(curl -fsSL https://api.github.com/repos/GT-Edge-AI/GT-AI-OS/releases/latest | grep '"tag_name"' | head -1 | cut -d'"' -f4)"
+VER="${TAG#v}"
 curl -fsSL -o /tmp/gt-ai-os.deb \
-  https://github.com/GT-Edge-AI/GT-AI-OS/releases/download/v3.0.3/GT-AI-OS-Quick-Installer_3.0.3_all.deb
+  "https://github.com/GT-Edge-AI/GT-AI-OS/releases/download/${TAG}/GT-AI-OS-Quick-Installer_${VER}_all.deb"
 sudo apt install -y /tmp/gt-ai-os.deb
 sudo -E gt-ai-os-operator
 ```
@@ -33,11 +35,11 @@ sudo -E gt-ai-os-operator
 
 ## Update an existing installation
 
-Upgrade the app in your namespace with **`gt-ai-os-admin`** on the install host (substitute your namespace and target tag):
+Upgrade the app in your namespace with **`gt-ai-os-admin`** on the install host (uses the latest published release by default; set `TO_VERSION` to pin a tag):
 
 ```bash
 export NAMESPACE="gt-ai-os-prod"
-export TO_VERSION="v3.0.3"
+export TO_VERSION="$(curl -fsSL https://api.github.com/repos/GT-Edge-AI/GT-AI-OS/releases/latest | grep '"tag_name"' | head -1 | cut -d'"' -f4)"
 
 sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
   KUBECONFIG=/etc/rancher/rke2/rke2.yaml \
