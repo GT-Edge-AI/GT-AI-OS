@@ -12,28 +12,11 @@ Some capabilities require an **Enterprise license** from [GT Edge AI](https://gt
 
 ## Installation
 
-Choose your platform for detailed runbooks in the wiki, then use one install entry point below.
+Install the **Quick Installer `.deb`**, then run the operator and choose **Install → Interactive**. Commands are the same on Ubuntu and DGX; the wizard asks you to confirm detected host type and architecture.
 
-| Platform | Guide |
-|----------|-------|
-| **Ubuntu** 24.04 (x86_64) | [Installation — Ubuntu](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Installation#ubuntu-installation) |
-| **NVIDIA DGX OS 7** (ARM64) | [Installation — DGX](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Installation#dgx-installation) |
+v3.0.2+ uses **registry-backed** images only. Public releases use **`ghcr.io/gt-edge-ai`** and typically do **not** require a GitHub PAT when [release assets](https://github.com/GT-Edge-AI/GT-AI-OS/releases) and GHCR packages are reachable.
 
-| Method | Use when |
-|--------|----------|
-| **Quick Installer `.deb`** (recommended) | Fresh install on **Ubuntu / Debian** — installs `gt-ai-os-operator` via apt, then run the operator menu |
-| **Operator script** | Same flow without apt (curl one-liner or saved script) |
-| **`gt-ai-os-admin` CLI** | Existing RKE2 cluster or fully non-interactive install from release tarballs |
-
-**Start here:** [Installation (wiki)](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Installation) · [Gen 3 Getting Started](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Getting-Started)
-
-v3.0.2+ uses **registry-backed** images only (no per-platform image bundle tarballs). Public releases on this repository use **`ghcr.io/gt-edge-ai`** and do **not** require a GitHub PAT or packaged token for install when [release assets](https://github.com/GT-Edge-AI/GT-AI-OS/releases) and GHCR packages are reachable.
-
-A **fresh install** means: on a supported host, install the operator (`.deb` or script below), then run **`sudo -E gt-ai-os-operator`** and choose **Install** — the operator bootstraps RKE2 (when needed) and deploys your namespace. Neither step alone deploys GT AI OS without that interactive or non-interactive operator flow.
-
-### Recommended — Quick Installer (latest stable tag)
-
-Replace `v3.0.3` with another [release tag](https://github.com/GT-Edge-AI/GT-AI-OS/releases) if you are not installing the current stable version. The `.deb` version in the filename is the semver **without** the `v` prefix (for example `3.0.3` for tag `v3.0.3`).
+Replace `v3.0.3` with another [release tag](https://github.com/GT-Edge-AI/GT-AI-OS/releases) if needed. The `.deb` version in the filename is semver **without** the `v` prefix (for example `3.0.3` for tag `v3.0.3`).
 
 ```bash
 curl -fsSL -o /tmp/gt-ai-os.deb \
@@ -42,46 +25,37 @@ sudo apt install -y /tmp/gt-ai-os.deb
 sudo -E gt-ai-os-operator
 ```
 
-### Alternative — operator script (no apt)
+**Typical LAN lab prompts:** accept detected host and arch; keep namespace `gt-ai-os-prod`; pick latest release; **LAN only** for Control Panel and Tenant; enter your static LAN IP for both; cluster **auto-detect**; confirm with `y`. Paste a GitHub PAT only if anonymous release download fails.
 
-**One-liner** (pipe supported on v3.0.2+ operator assets):
-
-```bash
-curl -fsSL https://github.com/GT-Edge-AI/GT-AI-OS/releases/latest/download/gt-ai-os-operator.sh | sudo -E bash
-```
-
-**Download first** (better for air-gapped re-runs or a fixed tag):
-
-```bash
-curl -fsSL -o /tmp/gt-ai-os-operator.sh \
-  https://github.com/GT-Edge-AI/GT-AI-OS/releases/download/v3.0.3/gt-ai-os-operator.sh
-chmod +x /tmp/gt-ai-os-operator.sh
-sudo -E /tmp/gt-ai-os-operator.sh
-```
-
-The operator installs itself to `/usr/local/bin/gt-ai-os-operator` when run with sufficient privileges.
-
-### Existing RKE2 cluster only
-
-If RKE2 is already installed and you only need to add a namespace (for example HA lab hosts), use **`gt-ai-os-admin`** from the release admin CLI tarballs — see [Gen 3 Getting Started](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Getting-Started) and `gt-ai-os-admin install --help`. That path is not a substitute for the operator on a **blank** host.
+**Full wizard table, validation, and troubleshooting:** [Self-Hosted installation](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Self-Hosted-Installation)
 
 ---
 
 ## Update an existing installation
 
-**Ubuntu / DGX (operator menu):**
+Upgrade the app in your namespace with **`gt-ai-os-admin`** on the install host (substitute your namespace and target tag):
 
 ```bash
-sudo -E gt-ai-os-operator --update-interactive --version latest
+export NAMESPACE="gt-ai-os-prod"
+export TO_VERSION="v3.0.3"
+
+sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
+  KUBECONFIG=/etc/rancher/rke2/rke2.yaml \
+  PATH="/var/lib/rancher/rke2/bin:/usr/local/bin:$PATH" \
+  gt-ai-os-admin release install-admin-cli --version "${TO_VERSION}"
+
+sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
+  KUBECONFIG=/etc/rancher/rke2/rke2.yaml \
+  PATH="/var/lib/rancher/rke2/bin:/usr/local/bin:$PATH" \
+  gt-ai-os-admin update --yes --namespace "${NAMESPACE}" --to "${TO_VERSION}"
+
+sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
+  KUBECONFIG=/etc/rancher/rke2/rke2.yaml \
+  PATH="/var/lib/rancher/rke2/bin:/usr/local/bin:$PATH" \
+  gt-ai-os-admin validate --namespace "${NAMESPACE}"
 ```
 
-**Validate after upgrade:**
-
-```bash
-sudo gt-ai-os-operator --validate --namespace <namespace> --lan-ip <your-lan-ip>
-```
-
-For troubleshooting, see [Updating](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Updating) and [Gen 3 Admin — Updates](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Admin-Updates).
+**Interactive upgrade, rollback, and failure fixes:** [Self-Hosted updating](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Self-Hosted-Updating)
 
 ---
 
@@ -94,7 +68,14 @@ Local-network installs (typical lab / LAN HTTPS):
 | Control Panel | `https://<host>:3001/login` | `gtadmin@test.com` / `Test@123` |
 | Tenant App | `https://<host>:3002/login` | `gtadmin@test.com` / `Test@123` |
 
-Replace `<host>` with the **fixed LAN IP** you set at install time. Change default passwords before production use. Accept the self-signed certificate warning in the browser.
+Replace `<host>` with the **fixed LAN IP** you set at install time. Accept the self-signed certificate warning in the browser.
+
+### Next steps
+
+1. Complete first-time setup: [Self-Hosted Control Panel setup](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Self-Hosted-Control-Panel)
+2. In Control Panel, open **Instructions** (sidebar) and **? GT Helper** — start with **Gen 3 Admin Getting Started** ([wiki mirror](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Admin-Getting-Started))
+3. In the tenant app, open **GT AI OS Instructions** → **Gen 3 Getting Started** ([wiki mirror](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Getting-Started)) for agents, chat, and datasets
+4. Change default passwords before production use
 
 ---
 
@@ -102,11 +83,11 @@ Replace `<host>` with the **fixed LAN IP** you set at install time. Change defau
 
 | Platform | Architecture | Minimum resources |
 |----------|--------------|-------------------|
-| **Ubuntu** 24.04 | x86_64 | 8+ CPU cores, 16 GB RAM, 100 GB disk (see wiki) |
-| **DGX OS 7** | ARM64 (Grace) | See [DGX installation guide](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Installation#dgx-installation) |
-| **Production HA** | Multi-node RKE2 | Per release manifest and wiki |
+| **Ubuntu** 24.04 | x86_64 | 8+ CPU cores, 16 GB RAM, 100 GB disk |
+| **DGX OS 7** | ARM64 (Grace) | Same command flow; confirm arch when prompted |
+| **Production HA** | Multi-node RKE2 | Per release manifest |
 
-Clusters must reach **`ghcr.io/gt-edge-ai`** (or your approved mirror). Databases require a StorageClass suitable for CloudNativePG (for example Longhorn with immediate volume binding). Details are in the wiki.
+Clusters must reach **`ghcr.io/gt-edge-ai`** (or your approved mirror). Databases require a StorageClass suitable for CloudNativePG (for example Longhorn with immediate volume binding). See the [installation runbook](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Self-Hosted-Installation) for prerequisites and troubleshooting.
 
 ---
 
@@ -124,7 +105,7 @@ Clusters must reach **`ghcr.io/gt-edge-ai`** (or your approved mirror). Database
 
 - **Agent builder** — Custom agents, templates, role-based access, and guardrails
 - **Datasets and RAG** — Document-centric chat with retrieval-augmented generation
-- **GT API** — OpenAI-compatible API for integrated applications (see wiki)
+- **GT API** — OpenAI-compatible API for integrated applications (documented in **GT AI OS Instructions** when GT API is enabled)
 - **Teams and sharing** — Workgroup access to agents and datasets
 - **Observability** — Usage dashboards, conversation review, and operational metrics
 - **Enterprise controls** — SSO, compliance mode, billing, and GT API (license required; see below)
@@ -153,30 +134,25 @@ After you receive a license file, open **Control Panel → License**, upload it,
 
 ## Documentation
 
-Full guides are in the **[wiki](https://github.com/GT-Edge-AI/GT-AI-OS/wiki)**:
+| Phase | Where to read |
+|-------|----------------|
+| **Install, update, Control Panel setup (host)** | [Self-Hosted installation](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Self-Hosted-Installation) · [Self-Hosted updating](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Self-Hosted-Updating) · [Self-Hosted Control Panel setup](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Self-Hosted-Control-Panel) |
+| **Operate Control Panel (in-app)** | After login: **Instructions** + **? GT Helper** — [Gen 3 Admin Getting Started](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Admin-Getting-Started) |
+| **Use the tenant app (in-app)** | **GT AI OS Instructions** — [Gen 3 Getting Started](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Getting-Started), [Chat](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Chat), [Agents](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Agents) |
+| **Issues** | [GitHub Issues](https://github.com/GT-Edge-AI/GT-AI-OS/issues); operator troubleshooting via **Instructions** / GT Helper ([Super Admin Troubleshooting](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Super-Admin-Troubleshooting) when published) |
 
-| Topic | Description |
-|-------|-------------|
-| [Gen 3 Getting Started](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Getting-Started) | Primary guide for RKE2 deployments |
-| [Gen 3 Admin Getting Started](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Admin-Getting-Started) | Control Panel administration |
-| [Gen 3 Chat](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Chat) | Tenant chat and conversations |
-| [Gen 3 Agents](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Agents) | Agent configuration and templates |
-| [Gen 3 GT API Overview](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Gt-Api-Overview) | API keys and compatibility |
-| [Installation](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Installation) | Platform install runbooks |
-| [Updating](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Updating) | Upgrade an existing deployment |
-| [Troubleshooting](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Super-Admin-Troubleshooting) | Common issues |
-
-Legacy Gen 2 wiki articles remain for reference during migration; prefer Gen 3 articles for new installs.
+In-app **GT AI OS Instructions** and **GT Helper** use the same Gen 3 wiki corpus; open them from the Control Panel or tenant UI after setup rather than relying on host runbooks for day-to-day product tasks.
 
 ---
 
 ## Quick commands
 
 ```bash
-gt-ai-os-operator                    # Install / update menu (use sudo -E when needed)
-gt-ai-os-admin report --namespace <ns>   # URLs and status
-gt-ai-os-admin validate --namespace <ns> # Post-install checks
-sudo gt-ai-os-operator --nuke --yes  # Remove install (lab reset)
+sudo -E gt-ai-os-operator              # Install menu only (use after .deb install)
+gt-ai-os-admin release list --limit 20 # Published release tags
+gt-ai-os-admin report --namespace <ns> # URLs and status
+gt-ai-os-admin validate --namespace <ns> # Post-install or post-update checks
+sudo gt-ai-os-operator --nuke --yes    # Remove install (lab reset)
 ```
 
 ---
@@ -188,7 +164,7 @@ sudo gt-ai-os-operator --nuke --yes  # Remove install (lab reset)
 | ≤ v3.0.1 | `GT-Edge-AI-Internal/gt-ai-os-release` | `gt-edge-ai-internal` |
 | ≥ v3.0.2 | **This repository** | `gt-edge-ai` |
 
-v3.0.2 does not dual-publish to the Internal release repository. Use the supported upgrade path to rewire release repo, GHCR owner, and registry pulls.
+v3.0.2 does not dual-publish to the Internal release repository. Upgrading to **v3.0.4+** via `gt-ai-os-operator --upgrade-non-interactive` or `gt-ai-os-admin update` automatically rewrites release repo, GHCR owner, and registry pulls (no manual env exports).
 
 ---
 

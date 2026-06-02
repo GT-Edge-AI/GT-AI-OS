@@ -2,6 +2,11 @@
 
 **[Home](Home)**
 
+### Self-Hosted deployment
+* [Installation](Gen3-Self-Hosted-Installation)
+* [Updating](Gen3-Self-Hosted-Updating)
+* [Control Panel setup](Gen3-Self-Hosted-Control-Panel)
+
 ### Getting Started
 * [Getting Started](Home)
 
