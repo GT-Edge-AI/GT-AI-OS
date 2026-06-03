@@ -127,9 +127,9 @@ You can install and use GT AI OS **without an Enterprise license** for evaluatio
 | **Tenant app — GT API** | API keys and external application integrations (also enable GT API for the tenant) |
 | **Tenant app — Billing** | Usage billing views and allocations (tenant owner) |
 
-**Included without a license** (subject to seat caps): install and updates, agents, chat, RAG, datasets, models, teams, backup/restore, and most observability (billing tabs stay hidden until licensed).
+**Included without an Enterprise license** (subject to seat caps): install and updates, agents, chat, RAG, datasets, models, teams, backup/restore, and most observability (billing tabs stay hidden until licensed).
 
-After you receive a license file, open **Control Panel → License**, upload it, and confirm the status shows active before using the features above.
+After you receive an Enterprise license file, open **Control Panel → License**, upload it, and confirm the status shows active before using the features above.
 
 ---
 
