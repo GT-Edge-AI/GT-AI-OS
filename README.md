@@ -116,9 +116,8 @@ Clusters must reach **`ghcr.io/gt-edge-ai`** (or your approved mirror). Database
 
 ## Enterprise license
 
-You can install and use GT AI OS **without a license** for evaluation, with **low user limits**. An **Enterprise license** raises seat limits and unlocks the integrations below. Licenses are **not** included in this repository—you request one from GT Edge AI and activate it on the Control Panel **License** page.
+You can install and use GT AI OS **without an Enterprise license** for evaluation, with **2 users**. An **Enterprise license** raises seat limits and unlocks the integrations below. Enterprise Licenses are **not** included in this repository— [you can request an Enterprise License from GT Edge AI](https://gtedge.ai/contact-us) and activate it on the Control Panel **License** page. 
 
-**Contact GT Edge AI** to request a license for your deployment: [gtedge.ai/contact-us](https://gtedge.ai/contact-us).
 
 | Area | Requires Enterprise license |
 |------|----------------------------|
