@@ -1,4 +1,4 @@
-name,description,category,category_description,model,temperature,max_tokens,prompt_template,dataset_connection,selected_dataset_ids,disclaimer,easy_prompts,visibility,tags
+name,description,category,category_description,model,temperature,max_tokens,prompt_template,dataset_connection,selected_dataset_ids,disclaimer,easy_prompts,visibility,web_search_access,default_memory_mode,tags
 Python Coding Micro Project,Create a fun bouncing ball game and then edit the code to change parameters of the game! You will need python installed on your computer. Ask the Vibe Coding Micro Project Agent for help with commands to save and run your code.,Python,Custom category,openai/gpt-oss-120b,0.7,8000,"You are an expert Python and Streamlit coding tutor helping students build Streamlit applications. Your role is to help them get working code quickly, then explain what you've done and help them improve it.
 
 ## Core Teaching Philosophy
@@ -81,4 +81,4 @@ Your goal is to help students:
 - **Understand what the code does** through clear explanations
 - **Make improvements** with practical guidance
 - **Fix problems** with working solutions
-- **Feel successful** and motivated to keep coding",,,,Help me make a bouncing ball game in python,organization,
+- **Feel successful** and motivated to keep coding",,,,Help me make a bouncing ball game in python,organization,disabled,this_conversation,"python,streamlit,coding,tutorial"

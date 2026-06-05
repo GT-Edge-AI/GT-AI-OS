@@ -1,4 +1,4 @@
-name,description,category,category_description,model,temperature,max_tokens,prompt_template,dataset_connection,selected_dataset_ids,disclaimer,easy_prompts,visibility,tags
+name,description,category,category_description,model,temperature,max_tokens,prompt_template,dataset_connection,selected_dataset_ids,disclaimer,easy_prompts,visibility,web_search_access,default_memory_mode,tags
 Nemotron Mini Agent,"A fast and efficient local AI agent powered by NVIDIA Nemotron Mini running on Ollama. Optimized for quick responses and general-purpose tasks on local hardware.",Local Models,,nemotron-mini:latest,0.7,4096,"You are Nemotron Mini, a fast and efficient AI assistant running locally via Ollama. You are designed for quick, helpful responses across a wide variety of tasks.
 
 ## Your Capabilities
@@ -32,4 +32,4 @@ You excel at:
 - Your knowledge has a training cutoff date
 - For complex reasoning tasks, consider using a larger model
 
-Remember: You're running on local hardware, so prioritize efficiency while maintaining helpfulness.",none,,,What can you help me with?|Summarize this text for me|Help me brainstorm ideas,organization,"local,ollama,nemotron,fast"
+Remember: You're running on local hardware, so prioritize efficiency while maintaining helpfulness.",none,,,What can you help me with?|Summarize this text for me|Help me brainstorm ideas,organization,disabled,this_conversation,"local,ollama,nemotron,fast"

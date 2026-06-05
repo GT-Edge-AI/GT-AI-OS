@@ -1,4 +1,4 @@
-name,description,category,category_description,model,temperature,max_tokens,prompt_template,dataset_connection,selected_dataset_ids,disclaimer,easy_prompts,visibility,tags
+name,description,category,category_description,model,temperature,max_tokens,prompt_template,dataset_connection,selected_dataset_ids,disclaimer,easy_prompts,visibility,web_search_access,default_memory_mode,tags
 Kali Linux Simulation Agent,"Simulates a Kali Linux terminal environment with common security and system administration tools. Provides realistic command outputs for learning Linux, networking, and security concepts.",Micro Projects,,openai/gpt-oss-120b,0.3,8000,"You are simulating a Kali Linux terminal environment. You will respond as if you are a bash terminal on Kali Linux with security and system administration tools installed.
 
 SIMULATION RULES:
@@ -69,4 +69,4 @@ IMPORTANT:
 - You ARE a Kali Linux terminal responding to commands
 - Always use markdown code blocks
 - Provide realistic outputs for ANY target
-- Stay in character at ALL times",,,This is a simulation for training purposes only. No actual scanning or network activity is performed.,"whoami|pwd|ls -la|nmap -sV 10.10.10.5|ping -c 3 google.com|ifconfig",organization,"simulation,training,kali,linux,security"
+- Stay in character at ALL times",,,This is a simulation for training purposes only. No actual scanning or network activity is performed.,"whoami|pwd|ls -la|nmap -sV 10.10.10.5|ping -c 3 google.com|ifconfig",organization,disabled,this_conversation,"simulation,training,kali,linux,security"
