@@ -131,6 +131,8 @@ sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
 
 | Symptom | Fix |
 |---------|-----|
+| **`the database system is shutting down`** during `update` (**v3.0.4**) | **Cosmetic** while CNPG restarts. Wait a few minutes; the upgrade still completes and apps reach **v3.0.4**. |
+| **`tenant DB migration version is 45, expected 44`** on `validate` (**v3.0.4**) | **Cosmetic** if `gt-ai-os-admin` was not refreshed—run **step 1**. The upgrade still worked; sign in when pods are ready. |
 | **`text file busy`** or **`Permission denied`** installing `gt-ai-os-admin` | Use **step 1** above (`gt_ai_os_ensure_admin_cli_version` via `gt-ai-os-admin-env.sh`); always run with **`sudo env …`**. Do not use bare `gt-ai-os-admin release install-admin-cli` while that same CLI is executing. |
 | **401/403** downloading release assets | Confirm outbound HTTPS to `github.com` and `ghcr.io`; check proxy or firewall rules blocking anonymous release access |
 | **`no state stored for namespace`** | Wrong namespace, or missing merged state under `/var/lib/gt-ai-os/admin` — confirm install completed and `state.json` lists your namespace |

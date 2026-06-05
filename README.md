@@ -61,6 +61,8 @@ sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
 
 **Interactive upgrade** (menu prompts for namespace and release): `sudo bash /var/lib/gt-ai-os/operator-scripts/manage-ai-os.sh upgrade`
 
+**v3.0.4 — known CLI messages (cosmetic):** `the database system is shutting down` during `update` is normal while CNPG restarts—wait a few minutes and let it finish. `tenant DB migration version is 45, expected 44` on `validate` is a false alarm if the host still has an older `gt-ai-os-admin` (run step 1). Neither blocks the upgrade; the namespace still reaches **v3.0.4** and the apps come up.
+
 **Rollback and troubleshooting:** [Self-Hosted updating](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Self-Hosted-Updating)
 
 ---
