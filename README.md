@@ -4,7 +4,7 @@
 
 GT AI OS is a **self-hosted enterprise AI platform** for **RKE2** (Kubernetes). A **Control Panel** handles administration; a **tenant app** gives users agents, chat, and document/RAG workflows. Data and inference stay in your environment.
 
-This repository has releases and install documentation for **v3.0.2** and later (current stable: **v3.0.3**). Install from [GitHub Releases](https://github.com/GT-Edge-AI/GT-AI-OS/releases); images are on **`ghcr.io/gt-edge-ai`**.
+This repository has releases and install documentation for **v3.0.2** and later (current stable: **v3.0.4**). Install from [GitHub Releases](https://github.com/GT-Edge-AI/GT-AI-OS/releases); images are on **`ghcr.io/gt-edge-ai`**.
 
 Some capabilities require an **Enterprise license** from [GT Edge AI](https://gtedge.ai/contact-us). See [Enterprise license](#enterprise-license) below.
 
@@ -14,9 +14,9 @@ Some capabilities require an **Enterprise license** from [GT Edge AI](https://gt
 
 Install the **Quick Installer `.deb`**, then run the operator and choose **Install → Interactive**. Commands are the same on Ubuntu and DGX; the wizard asks you to confirm detected host type and architecture.
 
-v3.0.2+ uses **registry-backed** images only. Public releases use **`ghcr.io/gt-edge-ai`** and typically do **not** require a GitHub PAT when [release assets](https://github.com/GT-Edge-AI/GT-AI-OS/releases) and GHCR packages are reachable.
+v3.0.2+ uses **registry-backed** images only. [Releases](https://github.com/GT-Edge-AI/GT-AI-OS/releases) and images on **`ghcr.io/gt-edge-ai`** do **not** require a GitHub PAT.
 
-Downloads the [latest published release](https://github.com/GT-Edge-AI/GT-AI-OS/releases/latest). To pin a specific tag, set `TAG` (for example `TAG=v3.0.3`) before running the commands. The `.deb` filename uses semver **without** the `v` prefix (`3.0.3` for tag `v3.0.3`).
+Downloads the [latest published release](https://github.com/GT-Edge-AI/GT-AI-OS/releases/latest). To pin a specific tag, set `TAG` (for example `TAG=v3.0.4`) before running the commands. The `.deb` filename uses semver **without** the `v` prefix (`3.0.4` for tag `v3.0.4`).
 
 ```bash
 TAG="$(curl -fsSL https://api.github.com/repos/GT-Edge-AI/GT-AI-OS/releases/latest | grep '"tag_name"' | head -1 | cut -d'"' -f4)"
@@ -27,7 +27,7 @@ sudo apt install -y /tmp/gt-ai-os.deb
 sudo -E gt-ai-os-operator
 ```
 
-**Typical LAN lab prompts:** accept detected host and arch; keep namespace `gt-ai-os-prod`; pick latest release; **LAN only** for Control Panel and Tenant; enter your static LAN IP for both; cluster **auto-detect**; confirm with `y`. Paste a GitHub PAT only if anonymous release download fails.
+**Typical LAN lab prompts:** accept detected host and arch; keep namespace `gt-ai-os-prod`; pick latest release; **LAN only** for Control Panel and Tenant; enter your static LAN IP for both; cluster **auto-detect**; confirm with `y`.
 
 **Full wizard table, validation, and troubleshooting:** [Self-Hosted installation](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Self-Hosted-Installation)
 
@@ -35,7 +35,9 @@ sudo -E gt-ai-os-operator
 
 ## Update an existing installation
 
-Upgrade the app in your namespace with **`gt-ai-os-admin`** on the install host (uses the latest published release by default; set `TO_VERSION` to pin a tag):
+Run these on the **install host** with cluster access. Use the latest published release by default, or set `TO_VERSION` to pin a tag (for example `TO_VERSION=v3.0.4`).
+
+Step 1 refreshes operator scripts from the release, then installs the matching **`gt-ai-os-admin`** for `TO_VERSION` using release assets (safe while the current CLI is still running). Steps 2–3 upgrade the namespace and validate.
 
 ```bash
 export NAMESPACE="gt-ai-os-prod"
@@ -44,7 +46,7 @@ export TO_VERSION="$(curl -fsSL https://api.github.com/repos/GT-Edge-AI/GT-AI-OS
 sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
   KUBECONFIG=/etc/rancher/rke2/rke2.yaml \
   PATH="/var/lib/rancher/rke2/bin:/usr/local/bin:$PATH" \
-  gt-ai-os-admin release install-admin-cli --version "${TO_VERSION}"
+  bash -c 'source /var/lib/gt-ai-os/operator-scripts/gt-ai-os-admin-env.sh && gt_ai_os_ensure_admin_cli_version "'"${TO_VERSION}"'"'
 
 sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
   KUBECONFIG=/etc/rancher/rke2/rke2.yaml \
@@ -57,7 +59,9 @@ sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
   gt-ai-os-admin validate --namespace "${NAMESPACE}"
 ```
 
-**Interactive upgrade, rollback, and failure fixes:** [Self-Hosted updating](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Self-Hosted-Updating)
+**Interactive upgrade** (menu prompts for namespace and release): `sudo bash /var/lib/gt-ai-os/operator-scripts/manage-ai-os.sh upgrade`
+
+**Rollback and troubleshooting:** [Self-Hosted updating](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Self-Hosted-Updating)
 
 ---
 
@@ -97,7 +101,7 @@ Clusters must reach **`ghcr.io/gt-edge-ai`** (or your approved mirror). Database
 
 | Topic | Detail |
 |-------|--------|
-| **Registry** | `ghcr.io/gt-edge-ai/gt-ai-os-*` tagged to match the release (for example `v3.0.3`) |
+| **Registry** | `ghcr.io/gt-edge-ai/gt-ai-os-*` tagged to match the release (for example `v3.0.4`) |
 | **Helm / manifest** | `gt-ai-os-v<version>.tgz` and `release-manifest.json` on each [Release](https://github.com/GT-Edge-AI/GT-AI-OS/releases) |
 | **Image bundles** | Not published for v3.0.2+ |
 
@@ -116,8 +120,9 @@ Clusters must reach **`ghcr.io/gt-edge-ai`** (or your approved mirror). Database
 
 ## Enterprise license
 
-You can install and use GT AI OS **without an Enterprise license** for evaluation, with **2 users**. An **Enterprise license** raises seat limits and unlocks the integrations below. Enterprise Licenses are **not** included in this repository— [you can request an Enterprise License from GT Edge AI](https://gtedge.ai/contact-us) and activate it on the Control Panel **License** page. 
+You can install and use GT AI OS **without a license** for evaluation, with **low user limits**. An **Enterprise license** raises seat limits and unlocks the integrations below. Licenses are **not** included in this repository—you request one from GT Edge AI and activate it on the Control Panel **License** page.
 
+**Contact GT Edge AI** to request a license for your deployment: [gtedge.ai/contact-us](https://gtedge.ai/contact-us).
 
 | Area | Requires Enterprise license |
 |------|----------------------------|
@@ -127,9 +132,9 @@ You can install and use GT AI OS **without an Enterprise license** for evaluatio
 | **Tenant app — GT API** | API keys and external application integrations (also enable GT API for the tenant) |
 | **Tenant app — Billing** | Usage billing views and allocations (tenant owner) |
 
-**Included without an Enterprise license** (subject to seat caps): install and updates, agents, chat, RAG, datasets, models, teams, backup/restore, and most observability (billing tabs stay hidden until licensed).
+**Included without a license** (subject to seat caps): install and updates, agents, chat, RAG, datasets, models, teams, backup/restore, and most observability (billing tabs stay hidden until licensed).
 
-After you receive an Enterprise license file, open **Control Panel → License**, upload it, and confirm the status shows active before using the features above.
+After you receive a license file, open **Control Panel → License**, upload it, and confirm the status shows active before using the features above.
 
 ---
 
@@ -149,11 +154,12 @@ In-app **GT AI OS Instructions** and **GT Helper** use the same Gen 3 wiki corpu
 ## Quick commands
 
 ```bash
-sudo -E gt-ai-os-operator              # Install menu only (use after .deb install)
-gt-ai-os-admin release list --limit 20 # Published release tags
-gt-ai-os-admin report --namespace <ns> # URLs and status
-gt-ai-os-admin validate --namespace <ns> # Post-install or post-update checks
-sudo gt-ai-os-operator --nuke --yes    # Remove install (lab reset)
+sudo -E gt-ai-os-operator                                    # Install menu (after .deb install)
+sudo bash /var/lib/gt-ai-os/operator-scripts/manage-ai-os.sh upgrade  # Interactive namespace upgrade
+gt-ai-os-admin release list --limit 20                       # Published release tags
+gt-ai-os-admin report --namespace <ns>                       # URLs and status
+gt-ai-os-admin validate --namespace <ns>                     # Post-install or post-update checks
+sudo gt-ai-os-operator --nuke --yes                          # Remove install (lab reset)
 ```
 
 ---
