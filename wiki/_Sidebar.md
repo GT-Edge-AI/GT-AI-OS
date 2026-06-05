@@ -4,6 +4,8 @@
 
 ### Self-Hosted deployment
 * [Installation](Gen3-Self-Hosted-Installation)
+  * [Install — Local LAN](Gen3-Self-Hosted-Install-Local-LAN)
+  * [Install — Cloudflare](Gen3-Self-Hosted-Install-Cloudflare)
 * [Updating](Gen3-Self-Hosted-Updating)
 * [Control Panel setup](Gen3-Self-Hosted-Control-Panel)
 

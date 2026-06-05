@@ -2,6 +2,10 @@
 
 ## Start Here
 
+- To get the GT AI OS Tenant Quick Start Manual for your version of GT AI OS, [go here](https://drive.google.com/drive/folders/17CwfKdCoCgj-5rOXUPu097dzLAFZi8qs?usp=drive_link).
+- Ensure you select the manual for your currently deployed version of GT AI OS.
+- Feel free to browse any version manual as you wish.
+
 1. Open the tenant app and confirm you can reach **Agents**, **Datasets**, and **Conversations** from the sidebar.
 2. Read the core workspaces table below and open the page that matches your first task.
 3. Pin favorite agents ([Agents](gen3/agents)) and create or verify datasets before long chat sessions.

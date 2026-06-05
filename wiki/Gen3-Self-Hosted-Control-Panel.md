@@ -1,6 +1,6 @@
 # Self-Hosted Control Panel setup
 
-First-time setup on the machine you installed. Assumes you completed [Self-Hosted installation](Gen3-Self-Hosted-Installation) and can open the Control Panel at `https://<your-lan-ip>:3001/login`.
+First-time setup on the machine you installed. Assumes you completed an [install runbook](Gen3-Self-Hosted-Installation) and can open the Control Panel URL from that runbook.
 
 ---
 

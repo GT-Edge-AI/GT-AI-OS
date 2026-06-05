@@ -46,7 +46,24 @@
       "slug": "gen3-admin/financial-controls",
       "title": "Financial Controls",
       "role": "all",
-      "icon": "receipt"
+      "icon": "receipt",
+      "children": [
+        {
+          "slug": "gen3-admin/financial-controls/model-pricing",
+          "title": "Model Pricing",
+          "role": "all"
+        },
+        {
+          "slug": "gen3-admin/financial-controls/provider-rate-cards",
+          "title": "Provider Rate Cards",
+          "role": "all"
+        },
+        {
+          "slug": "gen3-admin/financial-controls/storage-pricing",
+          "title": "Storage Pricing",
+          "role": "all"
+        }
+      ]
     },
     {
       "slug": "gen3-admin/email-settings",

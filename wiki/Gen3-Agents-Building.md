@@ -51,10 +51,14 @@ The tenant API reads the header row and first data row of each template CSV. Map
 | `easy_prompts` / `easy_buttons` | Easy buttons (pipe-delimited) |
 | `visibility` | Visibility (`individual`/`private` → private; `team`/`group` → group; `organization`/`tenant` → tenant) |
 | `selected_dataset_ids` / `dataset_ids` / `selected_dataset_names` / `dataset_names` | Attached datasets (UUID or dataset name match) |
+| `web_search_access` / `web_search_agent` / `web_search_enabled` | **Web search access** (`enabled` / `disabled`). When omitted, matches the Control Panel **Enable web search tool for agents by default** setting (same as a blank new agent). |
+| `web_search_model_id` / `web_search_model` | Optional override for the agent web search model (resolved like `model`) |
+| `default_memory_mode` / `memory_mode` | Default **Contextual Memory** scope for new chats (`this_conversation`, `this_agent`, `all_agents`; legacy `memory_type` values are normalized) |
+| `vision_model_id` / `vision_model` | Agent **Vision Settings** model (resolved against tenant vision models) |
 
-**Ignored columns:** `max_tokens` and `dataset_connection` are present in legacy template CSVs for compatibility but are **not** applied to Gen 3 agent records.
+**Ignored columns:** `max_tokens`, `dataset_connection`, and `category_description` are present in legacy template CSVs for compatibility but are **not** applied to Gen 3 agent records.
 
-**Not enabled by templates:** Applying a template does **not** turn on web search, vision, speech-to-text, text-to-speech, or image generation. Those capabilities stay at deployment and agent defaults until you configure the modality tabs manually after preload.
+**Capability templates:** Starters that need managed tools set explicit CSV flags where possible (for example `internet-search-agent.csv` sets `web_search_access=enabled`). Speech, image generation, and vision still require a configured model on the matching modality tab when the deployment does not supply a usable default—`vision-chat-agent.csv` reminds operators to pick a vision model after apply.
 
 Selecting **Use template** switches you to **Agent Configs** with a **Template applied** banner so you can review, adjust, and save.
 
@@ -107,20 +111,19 @@ Gen 3 exposes a fixed set of **managed** tools the chat model may call during **
 | `search_datasets` | Retrieve and count evidence from **conversation-attached datasets**, agent default datasets, or staged upload documents in the current chat scope. | Requires dataset or document scope in the thread. Not a substitute for public-web research. |
 | `analyze_image` | Direct vision review of images already stored in scoped datasets. | Requires vision model configuration and image-bearing documents. |
 | `generate_image` | Create a new image from a text prompt using agent or deployment image-generation defaults. | Requires image generation model configuration. |
-| `web_search` | Live public-web research through the deployment or agent web search model. | Requires the **web search triple gate** (below). Separate from dataset retrieval. |
+| `web_search` | Live public-web research through the deployment or agent web search model. | Requires deployment web search model configuration and agent **Web search access** set to **Enabled** (below). Separate from dataset retrieval. |
 | `translate_text` | Translate text through tenant-configured translation models. | Uses deployment/agent translation model routing. |
 
 **No MCP executable tools in the agent builder:** Unlike legacy flows that surfaced configurable MCP integration ids in the UI, Gen 3 tenant agent configuration does not let operators attach arbitrary MCP servers. Managed tools above are executed by the platform when policy and model capabilities allow.
 
-### Web search triple gate
+### Web search access
 
-The managed `web_search` tool runs only when **all three** are true:
+The managed `web_search` tool runs only when:
 
-1. **Deployment default** — Control Panel **Models → Default Models** enables web search and selects a web search model (off by default; see [Models](gen3-admin/models)).
-2. **Agent web search mode** — **Web Search Settings → Web search mode** is **Enabled**, or **Inherit deployment default** while deployment web search is on.
-3. **Agent checkbox** — **Allow this agent to use web search** (`webSearchAgent`) is checked on the agent.
+1. **Deployment model** — Control Panel **Models → Default Models** selects a web search model (and may enable web search for new agents by default; see [Models](gen3-admin/models)).
+2. **Agent access** — **Web Search → Web search access** is **Enabled** for that agent. New agents start **Enabled** or **Disabled** according to the Control Panel **Enable web search tool for agents by default** setting.
 
-If any gate is false, chat will not invoke `web_search` for that agent even when the user asks for current events.
+If deployment web search is off or the agent access is **Disabled**, chat will not invoke `web_search` for that agent even when the user asks for current events.
 
 ### Chat tool timeline
 

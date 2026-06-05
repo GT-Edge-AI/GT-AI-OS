@@ -40,9 +40,16 @@ Use budget settings to define warning, critical, or hard-stop posture and the ge
 
 This section controls the prices attached to configured models. Keep it aligned with the actual provider catalog so observability and budget posture remain meaningful.
 
+Deep-dive runbooks:
+
+- [Model Pricing workspace](gen3-admin/financial-controls/model-pricing) — statuses, online reset, CSV import/export, capability and compound rows
+- [Provider rate cards](gen3-admin/financial-controls/provider-rate-cards) — vendor list-price URLs and mapping into input/output per 1M tokens or unit pricing
+
 ### Storage pricing
 
 Use storage-pricing controls when the deployment tracks retained content cost as part of billing posture.
+
+See [Storage pricing](gen3-admin/financial-controls/storage-pricing) for dataset/document GiB-month meters and tenant **Billing** verification.
 
 ### Allocations
 
@@ -69,5 +76,10 @@ Use allocations to divide or label spending posture in a more structured way tha
 
 ## Related pages
 
+- [Model Pricing](gen3-admin/financial-controls/model-pricing)
+- [Provider rate cards](gen3-admin/financial-controls/provider-rate-cards)
+- [Storage pricing](gen3-admin/financial-controls/storage-pricing)
 - [Models](gen3-admin/models)
+- [Observability](gen3/observability)
+- [GT Helper](gen3-admin/instructions-helper)
 - [License](gen3-admin/licenses)

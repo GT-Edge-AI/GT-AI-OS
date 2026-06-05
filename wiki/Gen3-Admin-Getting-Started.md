@@ -2,6 +2,10 @@
 
 ## Start Here
 
+- To get the GT AI OS Control Panel Quick Start Manual for your version of GT AI OS, [go here](https://drive.google.com/drive/folders/1LxpupHdrbs63OfGceQMo8rggnsluqFH6?usp=drive_link).
+- Ensure you select the manual for your currently deployed version of GT AI OS.
+- Feel free to browse any version manual as you wish.
+
 1. Sign in to the **Control Panel** operator UI.
 2. Open **Dashboard** for deployment health summary.
 3. Review [Models](gen3-admin/models) before tenants consume new providers.
