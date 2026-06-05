@@ -9,7 +9,7 @@ For installs from **v3.0.2+** public releases (`GT-Edge-AI/GT-AI-OS`, `ghcr.io/g
 ## Before you start
 
 - Run commands on the **same host** that installed the cluster (or any host with `/var/lib/gt-ai-os/admin` state and cluster `kubeconfig` access).
-- Know your namespace (default **`gt-ai-os-prod`**). Target release defaults to **latest published**; pin with `TO_VERSION=v3.0.x` if needed.
+- Know your namespace (default **`gt-ai-os-prod`**). Target release defaults to **latest published**; pin with `TO_VERSION=v3.0.4` (or your target tag) if needed.
 - List published tags if needed:
 
 ```bash
@@ -19,13 +19,15 @@ sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
   gt-ai-os-admin release list --limit 20
 ```
 
-Shared operator state lives under **`/var/lib/gt-ai-os/admin`** (auth, `state.json`, generated manifests). Any sudo user on the host can reuse stored credentials after the first successful auth.
+Shared operator state lives under **`/var/lib/gt-ai-os/admin`** (`state.json`, generated manifests, and stored Cloudflare profiles when you use a Cloudflare install). Any sudo user on the host can reuse that state.
 
 ---
 
 ## Non-interactive upgrade (recommended for automation)
 
-Substitute your namespace; `TO_VERSION` resolves to the latest published release unless you set it explicitly:
+Substitute your namespace; `TO_VERSION` resolves to the latest published release unless you set it explicitly.
+
+**Step 1** refreshes operator scripts from the release, then installs the matching **`gt-ai-os-admin`** for `TO_VERSION` using release assets (safe while the current CLI is still running). **Steps 2–4** upgrade the namespace, validate, and report.
 
 ```bash
 export NAMESPACE="gt-ai-os-prod"
@@ -34,7 +36,7 @@ export TO_VERSION="$(curl -fsSL https://api.github.com/repos/GT-Edge-AI/GT-AI-OS
 sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
   KUBECONFIG=/etc/rancher/rke2/rke2.yaml \
   PATH="/var/lib/rancher/rke2/bin:/usr/local/bin:$PATH" \
-  gt-ai-os-admin release install-admin-cli --version "${TO_VERSION}"
+  bash -c 'source /var/lib/gt-ai-os/operator-scripts/gt-ai-os-admin-env.sh && gt_ai_os_ensure_admin_cli_version "'"${TO_VERSION}"'"'
 
 sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
   KUBECONFIG=/etc/rancher/rke2/rke2.yaml \
@@ -58,7 +60,13 @@ sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
 
 ## Interactive upgrade
 
-Install the admin CLI for the target tag, then run `update` without `--yes` to confirm namespace and version at prompts:
+**Menu (recommended):** prompts for namespace and release, then runs the same admin CLI install + update + validate flow:
+
+```bash
+sudo bash /var/lib/gt-ai-os/operator-scripts/manage-ai-os.sh upgrade
+```
+
+**Manual prompts:** install the admin CLI for the target tag, then run `update` without `--yes` to confirm namespace and version at prompts:
 
 ```bash
 export TO_VERSION="$(curl -fsSL https://api.github.com/repos/GT-Edge-AI/GT-AI-OS/releases/latest | grep '"tag_name"' | head -1 | cut -d'"' -f4)"
@@ -66,7 +74,7 @@ export TO_VERSION="$(curl -fsSL https://api.github.com/repos/GT-Edge-AI/GT-AI-OS
 sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
   KUBECONFIG=/etc/rancher/rke2/rke2.yaml \
   PATH="/var/lib/rancher/rke2/bin:/usr/local/bin:$PATH" \
-  gt-ai-os-admin release install-admin-cli --version "${TO_VERSION}"
+  bash -c 'source /var/lib/gt-ai-os/operator-scripts/gt-ai-os-admin-env.sh && gt_ai_os_ensure_admin_cli_version "'"${TO_VERSION}"'"'
 
 sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
   KUBECONFIG=/etc/rancher/rke2/rke2.yaml \
@@ -96,7 +104,7 @@ export TO_VERSION="$(curl -fsSL https://api.github.com/repos/GT-Edge-AI/GT-AI-OS
 sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
   KUBECONFIG=/etc/rancher/rke2/rke2.yaml \
   PATH="/var/lib/rancher/rke2/bin:/usr/local/bin:$PATH" \
-  gt-ai-os-admin release install-admin-cli --version "${TO_VERSION}"
+  bash -c 'source /var/lib/gt-ai-os/operator-scripts/gt-ai-os-admin-env.sh && gt_ai_os_ensure_admin_cli_version "'"${TO_VERSION}"'"'
 ```
 
 The cluster app version stays the same until you run **`update --to …`**.
@@ -123,16 +131,11 @@ sudo env GT_AI_OS_ADMIN_CONFIG_DIR=/var/lib/gt-ai-os/admin \
 
 | Symptom | Fix |
 |---------|-----|
-| **401/403** downloading release assets | `gt-ai-os-admin auth register` or `auth github --non-interactive` with a PAT that has **Contents: Read** on `GT-Edge-AI/GT-AI-OS` |
+| **`text file busy`** or **`Permission denied`** installing `gt-ai-os-admin` | Use **step 1** above (`gt_ai_os_ensure_admin_cli_version` via `gt-ai-os-admin-env.sh`); always run with **`sudo env …`**. Do not use bare `gt-ai-os-admin release install-admin-cli` while that same CLI is executing. |
+| **401/403** downloading release assets | Confirm outbound HTTPS to `github.com` and `ghcr.io`; check proxy or firewall rules blocking anonymous release access |
 | **`no state stored for namespace`** | Wrong namespace, or missing merged state under `/var/lib/gt-ai-os/admin` — confirm install completed and `state.json` lists your namespace |
 | **ImagePullBackOff** after upgrade | Confirm `ghcr.io/gt-edge-ai` images for the target tag are reachable |
 | In-app update dashboard | After upgrade, use Control Panel **Instructions** → **Gen 3 Admin — Updates** (product UI, not host CLI) |
-
----
-
-## Migration from Internal releases (≤ v3.0.1)
-
-Upgrading to **v3.0.2+** rewires release repo and GHCR owner to the public product path. After the first successful **`gt-ai-os-admin update`** to a current tag, re-run **`validate`** and **`report`**.
 
 ---
 
