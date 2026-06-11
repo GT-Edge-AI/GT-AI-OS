@@ -2,7 +2,15 @@
 
 Choose one install runbook below. Each runbook takes you from a fresh Ubuntu or DGX host through the interactive operator wizard to your first **Control Panel** login.
 
-After install, continue to [Self-Hosted Control Panel setup](Gen3-Self-Hosted-Control-Panel). To upgrade an existing host, see [Self-Hosted updating](Gen3-Self-Hosted-Updating).
+After install, complete the Control Panel **QuickStart** wizard (`/dashboard/quickstart`) — see [Control Panel QuickStart](Gen3-Admin-Quickstart). Optionally apply the universal free-tier baseline before first login:
+
+```bash
+gt-ai-os-admin install --baseline   # apply defaults at end of guided install
+# or after any successful install:
+gt-ai-os-admin setup-baseline-apply --namespace <namespace> --yes
+```
+
+The interactive `install-ai-os.sh` script prompts for baseline apply when run on a TTY. Continue to [Self-Hosted Control Panel setup](Gen3-Self-Hosted-Control-Panel). To upgrade an existing host, see [Self-Hosted updating](Gen3-Self-Hosted-Updating).
 
 ---
 

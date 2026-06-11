@@ -45,11 +45,12 @@ The Gen 3 Control Panel is the operator workspace for deployment-wide administra
 
 ## Recommended first operator walkthrough
 
-1. Open [Dashboard](gen3-admin/dashboard) to confirm license and user posture.
-2. Review [Users](gen3-admin/users) to confirm the account mix and MFA state.
-3. Check [Models](gen3-admin/models) if the deployment depends on external inference providers.
-4. Confirm [Email Settings](gen3-admin/email-settings) and [License](gen3-admin/licenses) before onboarding users.
-5. Use [Settings](gen3-admin/settings) for deployment-wide posture such as branding and session timeout, then [Backup & Restore](gen3-admin/backup-restore) for CNPG schedules and restore drills.
+1. Complete the in-app [QuickStart](gen3-admin/quickstart) wizard (`/dashboard/quickstart`) after your first Super Admin login — free-tier Groq + NVIDIA NIM keys, optional Ollama, default models, users, and SMTP.
+2. Open [Dashboard](gen3-admin/dashboard) to confirm license and user posture.
+3. Review [Users](gen3-admin/users) to confirm the account mix and MFA state.
+4. Check [Models](gen3-admin/models) if the deployment depends on external inference providers.
+5. Confirm [Email Settings](gen3-admin/email-settings) and [License](gen3-admin/licenses) before onboarding users.
+6. Use [Settings](gen3-admin/settings) for deployment-wide posture such as branding and session timeout, then [Backup & Restore](gen3-admin/backup-restore) for CNPG schedules and restore drills.
 
 ## Important route boundaries
 

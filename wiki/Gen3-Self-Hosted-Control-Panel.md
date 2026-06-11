@@ -4,18 +4,21 @@ First-time setup on the machine you installed. Assumes you completed an [install
 
 ---
 
-## 1. Sign in and secure the deployment
+## 1. Sign in and complete QuickStart
 
 1. Open **Control Panel** at `https://<lan-ip>:3001/login` with the install default (`gtadmin@test.com` / `Test@123`) unless you already changed it.
-2. Change default passwords for operator accounts before wider use (Control Panel **Users** and tenant **Users** as your role allows).
-3. If you have an **Enterprise license** file, open **License**, upload it, and confirm status is **active** before enabling SSO, compliance, billing, or GT API features.
+2. Complete the **QuickStart** wizard (`/dashboard/quickstart`) — free-tier **Groq Cloud** and **NVIDIA NIM** API keys, optional local **Ollama**, platform default models, users, and SMTP. See [Control Panel QuickStart](Gen3-Admin-Quickstart).
+3. Change default passwords for operator accounts before wider use (Control Panel **Users** and tenant **Users** as your role allows).
+4. If you have an **Enterprise license** file, open **License**, upload it, and confirm status is **active** before enabling SSO, compliance, billing, or GT API features.
 
 ---
 
 ## 2. Models and platform defaults
 
-1. Open **Models** (or **Default models / web search** per your build) and confirm inference endpoints match your environment.
-2. Set defaults tenants will inherit where the UI exposes deployment-wide policy.
+QuickStart covers baseline inference providers and default model confirmation. After QuickStart:
+
+1. Open **Models** to adjust inference endpoints or add paid providers.
+2. Confirm deployment-wide defaults on **Default Models** match your policy.
 3. For read-only model browsing tenants use later, they open **Management → Model Catalog** in the tenant app (documented in **Gen 3 Getting Started** inside Instructions).
 
 ---
