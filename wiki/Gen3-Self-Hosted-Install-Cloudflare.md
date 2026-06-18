@@ -70,7 +70,7 @@ Use the `id` from the correct account in the install wizard.
 
 ## 2. Install the Quick Installer
 
-To pin a release, set `TAG` before download (for example `TAG=v3.0.3`). The `.deb` filename uses semver **without** the `v` prefix (`3.0.3` for tag `v3.0.3`).
+To pin a release, set `TAG` before download (for example `TAG=v3.0.4`). The `.deb` filename uses semver **without** the `v` prefix (`3.0.4` for tag `v3.0.4`).
 
 ```bash
 TAG="$(curl -fsSL https://api.github.com/repos/GT-Edge-AI/GT-AI-OS/releases/latest | grep '"tag_name"' | head -1 | cut -d'"' -f4)"
@@ -96,21 +96,15 @@ When the operator menu appears, choose the following:
 
 ## 4. Install wizard
 
-When the install wizard prompts you, choose or enter the following:
+Complete the [shared wizard steps](Gen3-Self-Hosted-Installation#shared-wizard-steps-every-scenario), then use these **ingress-specific** answers:
 
 | When you see | Choose or enter |
 |--------------|-----------------|
-| **Detected host** — use this? | **Y** |
-| **Detected architecture** — use this package? | **Y** |
-| **Kubernetes namespace** | Your namespace (for example `gt-ai-os-prod`) or **Enter** for the default |
-| **Choose a release** | Your release tag (for example **v3.0.3**) |
-| **Deployment edge / access mode** | **3** (cloudflare-commercial) or **4** (cloudflare-government) |
+| **Control Panel — access model** | **3** (Cloudflare tunnel) |
+| **Tenant App — access model** | **3** (Cloudflare tunnel) |
+| **Cloudflare profile** | **1** (commercial) or **2** (government) — pick **one** account type only |
 | **Control Panel public hostname** | FQDN only (for example `ctp.example.com`) |
 | **Tenant app public hostname** | FQDN only (for example `app.example.com`) |
-| **How should GT AI OS use Kubernetes?** | **1** (Auto-detect) on a clean host |
-| **Fresh install vs Resume** (if RKE2 is already running) | **1** Fresh; **2** Resume |
-| **Wipe vs Abort** (if RKE2 artifacts exist but the API is down) | **1** Wipe |
-| **Ready to install?** | **y** |
 | **Cloudflare API token** (after you confirm install) | Token from [section 1.1](#11-create-the-api-token) |
 | **Cloudflare account ID** | ID from [section 1.2](#12-find-the-account-id) |
 

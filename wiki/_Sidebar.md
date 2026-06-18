@@ -5,7 +5,10 @@
 ### Self-Hosted deployment
 * [Installation](Gen3-Self-Hosted-Installation)
   * [Install — Local LAN](Gen3-Self-Hosted-Install-Local-LAN)
+  * [Install — Local Portable](Gen3-Self-Hosted-Install-Local-Portable)
+  * [Install — NAT & DNS](Gen3-Self-Hosted-Install-NAT-DNS)
   * [Install — Cloudflare](Gen3-Self-Hosted-Install-Cloudflare)
+  * [Install — mixed ingress](Gen3-Self-Hosted-Install-Mixed)
 * [Updating](Gen3-Self-Hosted-Updating)
 * [Control Panel setup](Gen3-Self-Hosted-Control-Panel)
 
