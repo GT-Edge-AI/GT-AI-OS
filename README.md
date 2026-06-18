@@ -4,7 +4,7 @@
 
 GT AI OS is a **self-hosted enterprise AI platform** for **RKE2** (Kubernetes). A **Control Panel** handles administration; a **tenant app** gives users agents, chat, and document/RAG workflows. Data and inference stay in your environment.
 
-This repository has releases and install documentation for **v3.0.2** and later (current stable: **v3.0.5-stable**). Install from [GitHub Releases](https://github.com/GT-Edge-AI/GT-AI-OS/releases); images are on **`ghcr.io/gt-edge-ai`**.
+This repository has releases and install documentation for **v3.0.2** and later (current stable: **v3.0.4**). Install from [GitHub Releases](https://github.com/GT-Edge-AI/GT-AI-OS/releases); images are on **`ghcr.io/gt-edge-ai`**.
 
 Some capabilities require an **Enterprise license** from [GT Edge AI](https://gtedge.ai/contact-us). See [Enterprise license](#enterprise-license) below.
 
@@ -27,9 +27,11 @@ sudo apt install -y /tmp/gt-ai-os.deb
 sudo -E gt-ai-os-operator
 ```
 
-**Typical LAN lab prompts:** accept detected host and arch; keep namespace `gt-ai-os-prod`; pick latest release; **LAN only** for Control Panel and Tenant; enter your static LAN IP for both; cluster **auto-detect**; confirm with `y`.
+**Typical LAN lab prompts:** accept detected host and arch; keep namespace `gt-ai-os-prod`; pick latest release; choose **LAN only** for Control Panel and Tenant App; enter your static LAN IP (or accept autodetect); cluster **auto-detect**; confirm with `y`.
 
-**Full wizard table, validation, and troubleshooting:** [Self-Hosted installation](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Self-Hosted-Installation)
+The installer also supports **NAT & DNS**, **Cloudflare tunnel**, **Local Portable** (roaming laptop), and **mixed per-app** ingress — pick the matching runbook on the wiki hub.
+
+**Full wizard tables, validation, and troubleshooting:** [Self-Hosted installation](https://github.com/GT-Edge-AI/GT-AI-OS/wiki/Gen3-Self-Hosted-Installation)
 
 ---
 
