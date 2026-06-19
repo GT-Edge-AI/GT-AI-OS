@@ -46,6 +46,7 @@ Existing reference content, tables, and deep dives live here.
 - Tenant articles: place assets under `gen3/images/` (e.g. `gen3/images/chat-paperclip.png`).
 - Control Panel articles: place assets under `gen3-admin/images/` (e.g. `gen3-admin/images/cp-models.png`).
 - Markdown syntax: `![descriptive alt text](gen3/images/filename.png)` for tenant pages, or `![descriptive alt text](gen3-admin/images/filename.png)` for Control Panel pages. From an article in the same namespace you may also use `./images/filename.png` (resolved to `gen3/images/…` or `gen3-admin/images/…` via `WikiAssetURL`). Alt text is required for accessibility.
+- **Do not wrap images in raw HTML** (`<table>`, `<td>`, etc.) — the in-app Instructions renderer only emits `<img>` for **standalone** markdown image lines. For side-by-side pairs (e.g. light/dark theme), place two consecutive lines on adjacent rows with optional captions in the title: `![alt](gen3/images/light.png "Light mode")` then `![alt](gen3/images/dark.png "Dark mode")`.
 - Paths are wiki-relative; the tenant and Control Panel apps resolve them against the article namespace via `WikiAssetURL`.
 
 ### Captured screenshot filenames (RKE2 local)
@@ -67,8 +68,14 @@ Placeholder PNGs may ship in the repo until operators replace them with RKE2 cap
 | `gen3/images/gt-api-keys.png` | [GT API Keys and Access](gen3/gt-api/keys-and-access) |
 | `gen3/images/gt-api-published-endpoints.png` | [GT API Published Endpoints](gen3/gt-api/published-endpoints) |
 | `gen3/images/gt-api-openai-compatibility.png` | [GT API OpenAI Compatibility](gen3/gt-api/openai-compatibility) |
-| `gen3/images/observability-helper-tab.png` | [Observability](gen3/observability) — GT Helper (Tenant) tab |
-| `gen3/images/instructions-help-shelf.png` | Tenant **?** help shelf ([GT Helper](gen3/agents/helper-agent), [Getting Started](gen3/getting-started), [Workflows](gen3/workflows)) |
+| `gen3/images/observability-helper-tab.png` | [Observability](gen3/observability) — GT Helper tab |
+| `gen3/images/observability-memory-tab.png` | [Observability](gen3/observability) — Contextual Memory tab |
+| `gen3/images/instructions-help-shelf.png` | Tenant **?** help shelf ([GT Helper](gen3/gt-helper/overview), [Getting Started](gen3/getting-started), [Workflows](gen3/workflows)) |
+| `gen3/images/chat-window-preferences.png` | [Chat Window Preferences](gen3/chat/preferences), [Accessibility](gen3/accessibility) |
+| `gen3/images/chat-voice-mode.png` | [Accessibility](gen3/accessibility), [GT Chat](gen3/chat) — voice mode popup |
+| `gen3/images/accessibility-theme-light.png` | [Accessibility](gen3/accessibility) — Agents page shell in **light** mode (sidebar + main; pair with dark) |
+| `gen3/images/accessibility-theme-dark.png` | [Accessibility](gen3/accessibility) — Agents page shell in **dark** mode (capture after `accessibility-light`) |
+| `gen3/images/dataset-doc-summary-panel.png` | [Managing Dataset Content](gen3/datasets/managing) — floating summary panel |
 | `gen3/images/instructions-rbac-badge.png` | Role-gated wiki links in the Instructions drawer |
 | `gen3-admin/images/cp-models.png` | Control Panel [Models](gen3-admin/models) |
 | `gen3-admin/images/cp-default-models-web-search.png` | [Models](gen3-admin/models) — Default Models web search section |
@@ -76,6 +83,12 @@ Placeholder PNGs may ship in the repo until operators replace them with RKE2 cap
 | `gen3-admin/images/cp-helper-usage.png` | [CTP Helper Usage](gen3-admin/helper-usage) |
 | `gen3-admin/images/cp-updates.png` | [Updates](gen3-admin/updates) |
 | `gen3-admin/images/cp-backup-restore.png` | [Backup & Restore](gen3-admin/backup-restore) |
+| `gen3-admin/images/cp-quickstart-coach.png` | [QuickStart Setup Guide](gen3-admin/quickstart) |
+| `gen3-admin/images/cp-helper-settings.png` | [GT Helper Settings](gen3-admin/helper-settings) |
+| `gen3-admin/images/cp-contextual-memory.png` | [Contextual Memory](gen3-admin/contextual-memory) |
+| `gen3-admin/images/cp-broadcast-compose-html-mode.png` | [Email Settings](gen3-admin/email-settings) — Compose broadcast with **HTML** mode selected (v3.0.6-stable formatting workaround) |
+
+**Capture policy:** Re-capture all embeds in **light mode** except the accessibility theme pair (`accessibility-theme-light.png` / `accessibility-theme-dark.png`). Run `gt-ai-os/scripts/capture-wiki-screenshots.mjs` against the proof deployment; default output root is this repo’s `wiki/` directory.
 
 Replace files in place when refreshing captures; do not rename without updating every embed.
 
