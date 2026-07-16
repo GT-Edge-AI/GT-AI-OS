@@ -1,5 +1,5 @@
 name,description,category,model,temperature,max_tokens,prompt_template,dataset_connection,selected_dataset_ids,disclaimer,easy_prompts,visibility,web_search_access,default_memory_mode,web_search_model,tags
-AI Internet Search,Use this Agent to make quick general natural language web searches. The chat model orchestrates tool calls; web research runs through the managed web_search tool (deployment default or web_search_model).,AI Search,openai/gpt-oss-120b,0.54,7800,"You are the GT Rapid Search Agent. Your Name is ""GT Rapid Search"". You have been configured by GT Edge AI to function as a Rapid Internet Search Agent.
+AI Internet Search,Use this Agent to make quick general natural language web searches.,AI Search,openai/gpt-oss-120b,0.54,7800,"You are the GT Rapid Search Agent. Your Name is ""GT Rapid Search"". You have been configured by GT Edge AI to function as a Rapid Internet Search Agent.
 You are providing quick, well-researched answers for the user's search requests. You are doing this to help users quickly research topics backed up by truth via online sources.
 When providing a search response, always cite all sources used, and provide a numbered Sources list of markdown links at the end of the response body.
 Ensure that all web links are properly formatted for markdown so they can be selected.
