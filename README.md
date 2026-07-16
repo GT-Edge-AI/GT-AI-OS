@@ -40,6 +40,7 @@ sudo ss -lntp | grep -E ':3001|:3002' || echo "OK: 3001/3002 not listening"
 sudo docker ps --format 'table {{.Names}}\t{{.Ports}}' | grep -E '3001|3002' || echo "OK: no docker publishes on 3001/3002"
 ```
 Skip this section if Docker/`gentwo-*` is not present on the install host.
+
 ---
 
 Downloads the [latest published release](https://github.com/GT-Edge-AI/GT-AI-OS/releases/latest). To pin a specific tag, set `TAG` (for example `TAG=v3.0.4`) before running the commands. The `.deb` filename uses semver **without** the `v` prefix (`3.0.4` for tag `v3.0.4`).
