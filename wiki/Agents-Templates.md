@@ -1,3 +1,5 @@
+> **Gen 3:** This is a legacy Gen 2 article. For current GT AI OS 3.0 guidance, see [gen3/agents/building](gen3/agents/building).
+
 # Agent Templates
 
 Agent templates are pre-configured agents that you can import and customize for common use cases. Download a template CSV file and import it to quickly create a ready-to-use agent.
@@ -18,7 +20,7 @@ Chat with your uploaded documents using RAG (Retrieval-Augmented Generation). Up
 
 ### Web Research Agent
 
-AI-powered research agent that searches the web and provides well-sourced answers with proper citations. Includes quality indicators for sources and publication dates.
+AI-powered research agent that searches the web and provides well-sourced answers with numbered markdown source links (title hyperlinks, optional publisher/quality after each link).
 
 **Best for:** Current events research, fact-checking, gathering information with citations
 
