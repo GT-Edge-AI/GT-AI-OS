@@ -20,7 +20,7 @@ Chat with your uploaded documents using RAG (Retrieval-Augmented Generation). Up
 
 ### Web Research Agent
 
-AI-powered research agent that searches the web and provides well-sourced answers with numbered markdown source links (title hyperlinks, optional publisher/quality after each link).
+AI-powered research agent that searches the web and provides well-sourced answers with numbered markdown source links (title hyperlinks, optional publisher/quality, and Accessed date/time on each source).
 
 **Best for:** Current events research, fact-checking, gathering information with citations
 

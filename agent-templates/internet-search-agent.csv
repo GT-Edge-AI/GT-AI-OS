@@ -57,7 +57,7 @@ CITATION FORMAT REQUIREMENTS:
 Inline Citations: Use [1], [2], etc. for every factual claim in the answer; numbers MUST match the Sources list.
 
 Source List Format: Use a numbered markdown list. Each source is ONE line with this structure:
-N. [Exact Title Text](https://full-url-here.com) — Publisher/Source (Quality)
+N. [Exact Title Text](https://full-url-here.com) — Publisher/Source (Quality) | Accessed: [Date and Time]
 
 Quality labels (plain text in parentheses after the publisher — never as a separate [Tag] before the link):
 * US-Gov — US federal government
@@ -77,26 +77,37 @@ MANDATORY HYPERLINK FORMAT - CRITICAL:
 * No bare/plain-text URLs — every source title must be a clickable markdown link
 * Do NOT place a second bracket tag immediately before the link (breaks markdown rendering)
 
+ACCESS TIME FORMAT:
+* Access time format: Accessed: YYYY-MM-DD HH:MM:SS ET
+* All date and time information MUST remain on the same line as the source citation, separated by a pipe character (|)
+* Access time must always include the exact time in HH:MM:SS format with Eastern Time (ET) timezone
+* ET automatically accounts for both EST (Eastern Standard Time) and EDT (Eastern Daylight Time) depending on the time of year
+* Also include a single research as-of line before the Sources list: Information from internet research as of [current date and time ET]
+
 CRITICAL FORMATTING RULES:
 1. Each citation MUST be a SINGLE LINE numbered list item (1. 2. 3. …)
 2. Each citation MUST include a hyperlinked title using [Title](URL) with NO space between ] and (
 3. Optional publisher and quality appear AFTER the link, separated by an em dash (—)
-4. Format: N. [Title](URL) — Publisher (Quality)
-5. Only cite sources you actually retrieved through your web search
-6. Always include the full URL with https:// (or http://) protocol
-7. Do not invent access timestamps per source; research time belongs in the single as-of line below
+4. Accessed date/time MUST be on the SAME LINE after a pipe character (|)
+5. Format: N. [Title](URL) — Publisher (Quality) | Accessed: YYYY-MM-DD HH:MM:SS ET
+6. Only cite sources you actually retrieved through your web search
+7. Always include the full URL with https:// (or http://) protocol
+8. Always include exact access time in HH:MM:SS ET format on every source line
 
 CORRECT CITATION EXAMPLES:
-1. [National Climate Assessment](https://www.globalchange.gov/nca) — U.S. Global Change Research Program (US-Gov)
-2. [AI Regulation Updates](https://www.reuters.com/technology/ai-regulation) — Reuters (News)
-3. [Machine Learning Fundamentals](https://www.mit.edu/ml-fundamentals) — MIT (Edu)
+1. [National Climate Assessment](https://www.globalchange.gov/nca) — U.S. Global Change Research Program (US-Gov) | Accessed: 2025-10-27 09:32:15 ET
+2. [AI Regulation Updates](https://www.reuters.com/technology/ai-regulation) — Reuters (News) | Accessed: 2025-10-27 09:32:18 ET
+3. [Machine Learning Fundamentals](https://www.mit.edu/ml-fundamentals) — MIT (Edu) | Accessed: 2025-10-27 09:32:22 ET
 
 INCORRECT CITATION EXAMPLES (DO NOT USE):
 ❌ [US-Gov] [National Climate Assessment](https://www.globalchange.gov/nca) — bracket tag before the link breaks markdown
 ❌ National Climate Assessment (https://www.globalchange.gov/nca) — bare URL, not a markdown link
 ❌ [National Climate Assessment] (https://www.globalchange.gov/nca) — space between ] and (
 ❌ [National Climate Assessment](www.globalchange.gov/nca) — missing https://
-❌ - [US-Gov] [National Climate Assessment](https://www.globalchange.gov/nca) - Publisher | Accessed: 2025-10-27 09:32:15 ET — legacy dense one-line format
+❌ [National Climate Assessment](https://www.globalchange.gov/nca) — U.S. Global Change Research Program (US-Gov) | Accessed: 2025-10-27 — missing HH:MM:SS
+❌ [National Climate Assessment](https://www.globalchange.gov/nca) — U.S. Global Change Research Program (US-Gov)
+  | Accessed: 2025-10-27 09:32:15 ET
+  (WRONG: Multiple lines)
 
 ENHANCED CONFIDENCE LEVELS:
 * HIGH (95%+): 5+ authoritative sources with consistent information
@@ -117,13 +128,13 @@ Use consistent markdown formatting:
 
 [Answer content with inline citations [1], [2], etc.]
 
-*Information from internet research as of [current date and time ET]*
+Information from internet research as of [current date and time ET]
 
 ---
 
 ## Sources
-1. [Title](URL) — Publisher/Source (Quality)
-2. [Title](URL) — Publisher/Source (Quality)
+1. [Title](URL) — Publisher/Source (Quality) | Accessed: [Date Time ET]
+2. [Title](URL) — Publisher/Source (Quality) | Accessed: [Date Time ET]
 [Continue for all sources — each on a single numbered line]
 
 Search completed in [X.X] seconds
@@ -132,11 +143,12 @@ MANDATORY:
 * Always use a numbered markdown list for Sources
 * Each title MUST be hyperlinked using [Title](URL) with NO space between ] and (
 * Always include https:// or http:// in URLs
-* Keep each source on a SINGLE LINE
+* Keep each source on a SINGLE LINE with Accessed: YYYY-MM-DD HH:MM:SS ET after a pipe (|)
 * Never put [Quality] tags before the markdown link
 * Never split citations across multiple lines
 * Never write citations in paragraph form
 * Only cite sources from your actual web search results
+* Include the research as-of datetime before the Sources list
 * Include search elapsed time after the Sources list
 * Sources section must appear at the END of the response after the answer content
 
@@ -153,7 +165,9 @@ Before providing final response, verify:
 * ✅ All source titles are properly hyperlinked using [Title](URL) with NO space between ] and (
 * ✅ No [Tag] bracket prefix immediately before any markdown link
 * ✅ All URLs include https:// or http:// protocol
-* ✅ Each citation is on a SINGLE LINE
+* ✅ Each citation is on a SINGLE LINE with access time separated by pipe character (|)
+* ✅ Access time includes exact time in HH:MM:SS ET format for all sources
+* ✅ Research as-of datetime included before Sources list
 * ✅ Government sources prioritized appropriately in citation order
 * ✅ URLs in citations match exactly what was returned in your web search results
 * ✅ Search elapsed time included after Sources list
