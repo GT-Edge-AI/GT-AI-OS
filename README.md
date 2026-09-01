@@ -43,7 +43,7 @@ Skip this section if Docker/`gentwo-*` is not present on the install host.
 
 ---
 
-Downloads the [latest published release](https://github.com/GT-Edge-AI/GT-AI-OS/releases/latest). To pin a specific tag, set `TAG` (for example `TAG=v3.0.4`) before running the commands. The `.deb` filename uses semver **without** the `v` prefix (`3.0.4` for tag `v3.0.4`).
+Downloads the [latest published release](https://github.com/GT-Edge-AI/GT-AI-OS/releases/latest). To pin a specific tag, set `TAG` (for example `TAG=v3.0.10`) before running the commands. The `.deb` filename uses semver **without** the `v` prefix (`3.0.10` for tag `v3.0.10`).
 
 ```bash
 TAG="$(curl -fsSL https://api.github.com/repos/GT-Edge-AI/GT-AI-OS/releases/latest | grep '"tag_name"' | head -1 | cut -d'"' -f4)"
@@ -62,7 +62,7 @@ sudo -E gt-ai-os-operator
 
 ## Update an existing installation
 
-Run these on the **install host** with cluster access. Use the latest published release by default, or set `TO_VERSION` to pin a tag (for example `TO_VERSION=v3.0.4`).
+Run these on the **install host** with cluster access. Use the latest published release by default, or set `TO_VERSION` to pin a tag (for example `TO_VERSION=v3.0.10`).
 
 Step 1 refreshes operator scripts from the release, then installs the matching **`gt-ai-os-admin`** for `TO_VERSION` using release assets (safe while the current CLI is still running). Steps 2–3 upgrade the namespace and validate.
 
@@ -130,7 +130,7 @@ Clusters must reach **`ghcr.io/gt-edge-ai`** (or your approved mirror). Database
 
 | Topic | Detail |
 |-------|--------|
-| **Registry** | `ghcr.io/gt-edge-ai/gt-ai-os-*` tagged to match the release (for example `v3.0.4`) |
+| **Registry** | `ghcr.io/gt-edge-ai/gt-ai-os-*` tagged to match the release (for example `v3.0.10`) |
 | **Helm / manifest** | `gt-ai-os-v<version>.tgz` and `release-manifest.json` on each [Release](https://github.com/GT-Edge-AI/GT-AI-OS/releases) |
 | **Image bundles** | Not published for v3.0.2+ |
 
