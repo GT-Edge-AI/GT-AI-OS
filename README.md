@@ -20,27 +20,6 @@ v3.0.2+ uses **registry-backed** images only. [Releases](https://github.com/GT-E
 ### Before you install (hosts that already run Gen 2)
 
 LAN / local-dev installs bind **HTTPS** on host ports **`3001`** (Control Panel) and **`3002`** (Tenant App) via `browser-edge`. If **Gen 2** Docker is still running on the same host, its frontends usually publish the same ports over **HTTP** (`gentwo-controlpanel-frontend` → `:3001`, `gentwo-tenant-frontend` → `:3002`). Browsers then fail with TLS errors such as `SSL_ERROR_RX_RECORD_TOO_LONG` / `wrong version number`.
-
-**Stop Gen 2 frontends before installing Gen 3** (or free those ports another way):
-
-```bash
-# Confirm Gen 2 is publishing the ports Gen 3 local-dev needs
-sudo docker ps --format 'table {{.Names}}\t{{.Ports}}\t{{.Status}}' | grep -E '3001|3002|gentwo' || true
-
-# Free browser ports (minimum required for Gen 3 local-dev)
-sudo docker stop gentwo-controlpanel-frontend gentwo-tenant-frontend
-sudo docker update --restart=no gentwo-controlpanel-frontend gentwo-tenant-frontend
-
-# Optional: stop all Gen 2 containers on this host
-sudo docker ps -q --filter 'name=gentwo-' | xargs -r sudo docker stop
-sudo docker ps -aq --filter 'name=gentwo-' | xargs -r sudo docker update --restart=no
-
-# Confirm ports are free
-sudo ss -lntp | grep -E ':3001|:3002' || echo "OK: 3001/3002 not listening"
-sudo docker ps --format 'table {{.Names}}\t{{.Ports}}' | grep -E '3001|3002' || echo "OK: no docker publishes on 3001/3002"
-```
-Skip this section if Docker/`gentwo-*` is not present on the install host.
-
 ---
 
 Downloads the [latest published release](https://github.com/GT-Edge-AI/GT-AI-OS/releases/latest). To pin a specific tag, set `TAG` (for example `TAG=v3.0.10`) before running the commands. The `.deb` filename uses semver **without** the `v` prefix (`3.0.10` for tag `v3.0.10`).
