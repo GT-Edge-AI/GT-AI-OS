@@ -33,7 +33,7 @@ The active `Groups` page supports:
 Gen 3 supports two collaboration styles:
 
 - **Open collaboration groups** for general shared work
-- **Managed groups** with an assigned manager and governance fields such as monthly budget, budget notes, allowed model IDs, and default spend scope
+- **Managed groups** with one or more group managers, observability scope, and optional [limited models](gen3/groups/limited-models)
 
 If a group is managed, expect stronger controls around observability and administration.
 
@@ -48,7 +48,11 @@ If a group is managed, expect stronger controls around observability and adminis
 
 ### Create a group
 
-The create form supports the group name, description, default resource permission, and optional managed-group governance fields. Use managed groups when a group needs an explicit manager or policy controls rather than lightweight collaboration.
+The **New group** form supports the name, description, default resource permission, and optional **Managed group** managers. Tenant owners and tenant managers can assign more than one manager. Limit models after the group exists, from **Group settings**. See [Group Managers](gen3/groups/managers) and [Limited Models](gen3/groups/limited-models).
+
+### Open a group you belong to
+
+Any tenant user who can open a group can review **Members** and **Resources**. Invite and share actions stay with people who can manage the group.
 
 ### Review invitations and observable requests
 
@@ -74,5 +78,7 @@ The list supports selection-based leave and delete actions where your permission
 ## Related guidance
 
 - [Managing Membership and Sharing](gen3/groups/managing-membership)
+- [Group Managers](gen3/groups/managers)
+- [Limited Models](gen3/groups/limited-models)
 - [Sharing Agents](gen3/agents/sharing)
 - [Datasets](gen3/datasets)

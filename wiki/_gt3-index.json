@@ -47,6 +47,16 @@
           "role": "all"
         },
         {
+          "slug": "gen3/agents/capabilities",
+          "title": "Agent Capabilities",
+          "role": "all"
+        },
+        {
+          "slug": "gen3/agents/import-export",
+          "title": "Importing and Exporting Agents",
+          "role": "all"
+        },
+        {
           "slug": "gen3/agents/sharing",
           "title": "Sharing Agents",
           "role": "all"
@@ -73,6 +83,11 @@
           "slug": "gen3/datasets/managing",
           "title": "Managing Dataset Content",
           "role": "all"
+        },
+        {
+          "slug": "gen3/datasets/reviewing-files",
+          "title": "Reviewing Files in Order",
+          "role": "all"
         }
       ]
     },
@@ -86,6 +101,16 @@
           "slug": "gen3/groups/managing-membership",
           "title": "Managing Membership and Sharing",
           "role": "all"
+        },
+        {
+          "slug": "gen3/groups/managers",
+          "title": "Group Managers",
+          "role": "tenant_manager"
+        },
+        {
+          "slug": "gen3/groups/limited-models",
+          "title": "Limited Models",
+          "role": "tenant_owner"
         }
       ]
     },
@@ -105,7 +130,14 @@
       "slug": "gen3/observability",
       "title": "Observability",
       "role": "all",
-      "icon": "bar-chart"
+      "icon": "bar-chart",
+      "children": [
+        {
+          "slug": "gen3/observability/group-spend",
+          "title": "Group Spend",
+          "role": "tenant_owner"
+        }
+      ]
     },
     {
       "slug": "gen3/users",
@@ -140,6 +172,11 @@
         {
           "slug": "gen3/gt-api/overview",
           "title": "Overview",
+          "role": "all"
+        },
+        {
+          "slug": "gen3/gt-api/addresses",
+          "title": "API Addresses",
           "role": "all"
         },
         {

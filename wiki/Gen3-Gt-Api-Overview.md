@@ -1,6 +1,6 @@
 ## Start Here
 
-Use the tenant GT API base URL (`https://<tenant-host>/api/tenant`) with a scoped bearer key. Validate `GET /v1/models` before enabling chat, embeddings, uploads, or GT conversation headers.
+Open **GT API** and copy **FQDN**, **Base URL**, and endpoint URLs from **API address** at the top of the page. See [API Addresses](gen3/gt-api/addresses). Use that base URL (`https://<tenant-host>/api/tenant`) with a scoped bearer key. Validate `GET /v1/models` before enabling chat, embeddings, uploads, or GT conversation headers.
 
 ## Why this matters
 

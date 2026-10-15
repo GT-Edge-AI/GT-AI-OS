@@ -37,6 +37,12 @@ Review these questions before changing visibility:
 - the agent is safe and useful for a wider tenant audience
 - the underlying datasets are also visible to that same audience
 
+## Limited models
+
+If the agent uses a model a tenant owner limited to selected groups, **Visibility** offers **Individual** and **Group**. **Organization** is unavailable. The group list includes only groups that can use every limited model on the agent. See [Limited Models](gen3/groups/limited-models).
+
+The same agent can be shared into more than one managed group. See [Group Managers](gen3/groups/managers).
+
 ## The dependency rule
 
 An agent shared to other users is only as useful as the resources behind it. If the agent relies on a private dataset, other users may see the agent but still fail to get grounded answers. Review dataset posture on [Datasets](gen3/datasets) before troubleshooting the agent itself.
@@ -58,5 +64,6 @@ An agent shared to other users is only as useful as the resources behind it. If 
 ## Related pages
 
 - [Groups](gen3/groups)
+- [Limited Models](gen3/groups/limited-models)
 - [Managing Membership and Sharing](gen3/groups/managing-membership)
 - [Datasets](gen3/datasets)

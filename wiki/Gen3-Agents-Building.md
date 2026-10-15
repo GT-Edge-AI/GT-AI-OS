@@ -181,7 +181,10 @@ After every meaningful change:
 ## Related pages
 
 - [Agents](gen3/agents)
+- [Agent Capabilities](gen3/agents/capabilities)
+- [Importing and Exporting Agents](gen3/agents/import-export)
 - [Sharing Agents](gen3/agents/sharing)
+- [Reviewing Files in Order](gen3/datasets/reviewing-files)
 - [Using Datasets in Chat](gen3/chat/using-datasets)
 - [Control Panel Models](gen3-admin/models)
 - [GT Helper](gen3/agents/helper-agent)

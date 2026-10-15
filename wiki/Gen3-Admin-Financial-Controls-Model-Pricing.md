@@ -145,6 +145,12 @@ Configuration is Control Panel–only. Validation is tenant-side:
 
 Managers and tenant users do not see the **Billing** tab; use an owner account for verification.
 
+### Prices under one cent
+
+A per-item rate under one cent, such as `$0.008`, keeps three decimal places. A price of one cent or more still shows two decimal places, rounded to the nearest cent. Tenant owners see those amounts on [Group Spend](gen3/observability/group-spend).
+
+Dedicated web-search models, including Tavily Search, reserve the `web_search` meter on catalog endpoint checks. Give those rows a web-search price so a check does not report that no pricing is configured.
+
 ### Best practices
 
 - Reconcile model pricing whenever [Models](gen3-admin/models) gains or changes providers.

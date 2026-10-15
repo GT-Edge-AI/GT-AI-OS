@@ -60,7 +60,7 @@ This is the deeper workspace. Use it when you need to build an agent, review its
 
 ### Import or export an agent
 
-**Import** and **Export** in the configuration workspace move **saved agent definitions** (JSON/CSV bundles you already exported or received)—they are **not** the same as the **Agent Templates** catalog tab. Use **Agent Templates** for curated starters from the instructions repo; use **Import** when you have a full agent export file to restore.
+**Import Agent** and **Export Agent** move saved agent definitions as CSV, or as a ZIP when you export more than one. They are separate from the **Agent Templates** catalog tab. Use **Agent Templates** for curated starters from the instructions repo. See [Importing and Exporting Agents](gen3/agents/import-export). Turn vision, speech, or image generation off for one agent on [Agent Capabilities](gen3/agents/capabilities).
 
 ## How agents relate to datasets
 

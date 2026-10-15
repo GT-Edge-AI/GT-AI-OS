@@ -81,5 +81,6 @@ Dataset visibility depends on the access option selected for the dataset and, wh
 
 - [Uploading and Importing Documents](gen3/datasets/uploading)
 - [Managing Dataset Content](gen3/datasets/managing)
+- [Reviewing Files in Order](gen3/datasets/reviewing-files)
 - [Using Datasets in Chat](gen3/chat/using-datasets)
 - [Groups](gen3/groups)

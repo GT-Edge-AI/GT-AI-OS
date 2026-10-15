@@ -84,8 +84,18 @@ The Control Panel still contains redirect shims for `providers` and `api-keys`, 
 - Import only the models the deployment actually plans to use.
 - Review [Financial Controls](gen3-admin/financial-controls) after major model-catalog changes so pricing stays aligned.
 
+## Capabilities, Nebius, and CGNAT discovery
+
+On a configured model, **Capabilities** checkboxes **Image in**, **Image out**, **Speech to text**, and **Text to speech** keep that model in or out of the matching capability. See [Model Capabilities](gen3-admin/models/capabilities).
+
+Nebius Token Factory and Qwen on an OpenAI-compatible provider receive system messages as one leading message. See [Nebius and Qwen](gen3-admin/models/nebius-qwen).
+
+When a provider base URL is a Tailscale or CGNAT address (`100.64.0.0/10`), **Quick Add** states that discovery runs from GT AI OS cluster pods, not your browser. Each cluster node needs a route to that host.
+
 ## Related pages
 
+- [Model Capabilities](gen3-admin/models/capabilities)
+- [Nebius and Qwen](gen3-admin/models/nebius-qwen)
 - [GT Helper](gen3-admin/instructions-helper)
 - [Financial Controls](gen3-admin/financial-controls)
 - [Settings](gen3-admin/settings)

@@ -39,7 +39,7 @@ This section controls what tenant users see under **Contact support**. It can pu
 
 ### Welcome email policy
 
-Use this section to control whether onboarding email is sent and what subject/body content should be used.
+Use this section to control whether onboarding email is sent and what subject/body content should be used. To copy welcome mail to an archive mailbox without showing that address to the new user, see [Welcome Email BCC](gen3-admin/email-settings/welcome-bcc).
 
 ### Broadcasts
 

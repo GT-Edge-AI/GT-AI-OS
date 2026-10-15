@@ -71,6 +71,14 @@ The current group workflow distinguishes between group permission levels such as
 
 Managed groups can surface observable requests so a group manager can approve or deny deeper visibility. Review these from the overview area before assuming observability data is missing.
 
+## Several managers and limited models
+
+Check **Managed group** and select every person under **Group managers**. Tenant owners and tenant managers are eligible. Each assigned manager can filter Observability to this group. See [Group Managers](gen3/groups/managers).
+
+Tenant owners limit models on **Group settings** → **Limited models**. See [Limited Models](gen3/groups/limited-models).
+
+The same agent can be shared into more than one managed group from **Resources**.
+
 ## Best practices
 
 - Keep membership aligned to the smallest real collaboration audience.
@@ -81,5 +89,7 @@ Managed groups can surface observable requests so a group manager can approve or
 ## Related pages
 
 - [Groups](gen3/groups)
+- [Group Managers](gen3/groups/managers)
+- [Limited Models](gen3/groups/limited-models)
 - [Sharing Agents](gen3/agents/sharing)
 - [Datasets](gen3/datasets)

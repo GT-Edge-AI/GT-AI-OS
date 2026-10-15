@@ -45,3 +45,4 @@ When GT API is enabled for your account, automation pipelines (scheduled ingesti
 - [Diagram Review](gen3/workflows/diagram-review)
 - [Mock Assessments](gen3/workflows/mock-assessments)
 - [Using Datasets in Chat](gen3/chat/using-datasets)
+- [Reviewing Files in Order](gen3/datasets/reviewing-files)

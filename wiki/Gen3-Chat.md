@@ -5,7 +5,7 @@
 1. Open **GT Chat** and select an agent.
 2. Attach datasets or upload files if the task needs source material.
 3. Wait for document processing to finish before the next prompt when uploads are pending.
-4. Send your prompt and review the streamed response.
+4. Send your prompt and review the reply as it streams.
 5. Use copy, download, or report actions on assistant messages when needed.
 
 ![Paperclip and dataset attachment in chat](gen3/images/chat-paperclip.png)
@@ -28,6 +28,10 @@ GT Chat is the live execution surface—agent, conversation, datasets, uploads, 
 - shows response actions such as copy, download, and report
 
 Conversation history still exists outside chat, but the dedicated history route is [Conversations](gen3/conversations), not a separate documents or workflow page.
+
+Replies follow the provider stream. Token text shows as the model produces it, and the conversation summary is rebuilt when the reply finishes.
+
+Microphone, Read Aloud, image analysis, and image creation follow the agent’s capability switches. See [Agent Capabilities](gen3/agents/capabilities). A dataset-backed agent can list files and continue a source-ordered review. See [Reviewing Files in Order](gen3/datasets/reviewing-files).
 
 ### Dataset retrieval vs web search in chat
 

@@ -117,6 +117,8 @@ Use `Access Logs` for sign-in and activity-event review when your role includes 
 
 Use `Billing` when you are a tenant owner and the deployment exposes billing data. This view is analytic, not a configuration surface; Control Panel operators still own pricing and billing policy in the Control Panel `Financial Controls` page.
 
+**Time range** includes **All time**. Choose it before you export so the download uses the full retained window. On **Billing**, **Group spend** totals inference spend for people in each group. Click a bar to set the **Group** filter. **Top managers** names a person, or **No assigned manager** when the request was not charged to a group manager budget. See [Group Spend](gen3/observability/group-spend).
+
 ### Review GT API usage
 
 Use the **GT API** tab when GT API is enabled for your account and you need integration traffic alongside chat and storage analytics.
@@ -138,6 +140,7 @@ Conversation analytics exports can be filtered before download. Apply the filter
 
 ## Related pages
 
+- [Group Spend](gen3/observability/group-spend)
 - [GT Helper](gen3/agents/helper-agent)
 - [Conversations](gen3/conversations)
 - [Users](gen3/users)

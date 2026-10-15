@@ -3,7 +3,7 @@
 ## Start Here
 
 1. Open **Management → Model Catalog** from the tenant sidebar (alongside **Observability**, **Users**, and **Groups** when those routes are visible to your role).
-2. Read the **Default model by capability** strip at the top to see which models are currently marked default for chat, embeddings, vision, speech-to-text, text-to-speech, and image generation.
+2. Read the **Default model by capability** strip at the top to see which models are currently marked default for chat, web search, embeddings, vision, speech-to-text, text-to-speech, and image generation.
 3. Use search and the filter dropdowns to narrow the catalog table when you need a specific provider, model type, default status, source, or country.
 4. Click a column header to sort; use **Reset all** when filters hide the model you expected.
 5. When you need to change what appears here, ask a Control Panel operator to update [Models](gen3-admin/models)—this tenant page is browse-only.
@@ -50,6 +50,7 @@ Below the summary, a compact strip lists one row per catalog capability intent:
 | Capability | Internal intent |
 | --- | --- |
 | Chat | `chatText` |
+| Web search | `webSearch` |
 | Embeddings | `embedText` |
 | Vision | `visionDescribe` |
 | Speech-to-text | `transcribeAudio` |
@@ -57,6 +58,8 @@ Below the summary, a compact strip lists one row per catalog capability intent:
 | Image generation | `generateImage` |
 
 Each cell shows the default model name(s) for that capability, formatted as `[Provider] Model name` when provider metadata exists. When no default is configured for that slice, the cell reads **No default set**.
+
+The **Web search** cell shows the Control Panel default web search model. Endpoint checks for Tavily Search and other dedicated web-search models use the web-search price, so a configured `web_search` rate is the price those checks reserve.
 
 Default badges follow this precedence:
 

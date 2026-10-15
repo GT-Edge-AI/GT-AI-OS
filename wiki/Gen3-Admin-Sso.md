@@ -4,7 +4,7 @@
 
 1. Open **SSO Providers**.
 2. Create or edit the identity provider mapping for this deployment.
-3. Test sign-in with a low-risk operator account.
+3. Set the login-card sentence, then test sign-in with a low-risk operator account. See [Login Cards](gen3-admin/sso/login-cards).
 4. Document issuer and redirect URLs for your IdP team.
 
 ## Why this matters
@@ -64,6 +64,7 @@ The provisioning workflow lets you define how accounts should be created and upd
 
 ## Related pages
 
+- [Login Cards](gen3-admin/sso/login-cards)
 - [Users](gen3-admin/users)
 - [Access Logs](gen3-admin/access-logs)
 - [Settings](gen3-admin/settings)

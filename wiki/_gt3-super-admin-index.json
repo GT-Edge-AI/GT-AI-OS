@@ -22,13 +22,32 @@
       "slug": "gen3-admin/sso",
       "title": "SSO Providers",
       "role": "all",
-      "icon": "key-round"
+      "icon": "key-round",
+      "children": [
+        {
+          "slug": "gen3-admin/sso/login-cards",
+          "title": "Login Cards",
+          "role": "all"
+        }
+      ]
     },
     {
       "slug": "gen3-admin/models",
       "title": "Models",
       "role": "all",
-      "icon": "cpu"
+      "icon": "cpu",
+      "children": [
+        {
+          "slug": "gen3-admin/models/capabilities",
+          "title": "Model Capabilities",
+          "role": "all"
+        },
+        {
+          "slug": "gen3-admin/models/nebius-qwen",
+          "title": "Nebius and Qwen",
+          "role": "all"
+        }
+      ]
     },
     {
       "slug": "gen3-admin/updates",
@@ -69,7 +88,14 @@
       "slug": "gen3-admin/email-settings",
       "title": "Email Settings",
       "role": "all",
-      "icon": "mail"
+      "icon": "mail",
+      "children": [
+        {
+          "slug": "gen3-admin/email-settings/welcome-bcc",
+          "title": "Welcome Email BCC",
+          "role": "all"
+        }
+      ]
     },
     {
       "slug": "gen3-admin/email-templates",
