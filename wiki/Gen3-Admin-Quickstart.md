@@ -30,7 +30,7 @@ The **QuickStart** setup guide walks Super Admins through first-time Control Pan
 | Discover models | Confirm Groq + NIM models appear |
 | Platform defaults | **Required:** embedding, LLM, helper (+ web search when enabled) |
 | Model pricing | Review $0 free-tier pricing rows |
-| Compound verify | Enable Groq Compound for web-search agents |
+| Web search | Add a Tavily API key and set `tavily/search` as the default web search model |
 | Users | Create or bulk-upload at least one `tenant_owner` |
 | SMTP | Configure email or skip with acknowledgment |
 | Helper settings | Confirm GT Helper model |
